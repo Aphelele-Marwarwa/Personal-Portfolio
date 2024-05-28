@@ -303,8 +303,6 @@ main {
 
 
 
-
-
 /*-----------------------------------*\
   #SIDEBAR
 \*-----------------------------------*/
@@ -434,7 +432,8 @@ main {
 }
 
 .social-item .social-link {
-  font-size: 30px;
+  position: relative;
+  font-size: 18px;
 }
 
 .social-item .social-link[href*="wa.me"] {
@@ -451,6 +450,27 @@ main {
 
 .social-item .social-link:hover {
   color: initial; /* Keep the original color on hover */
+}
+
+.social-link::after {
+  content: attr(data-title);
+  position: absolute;
+  bottom: -30px; /* Adjust as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s;
+}
+
+.social-link:hover::after {
+  opacity: 1;
+  visibility: visible;
 }
 
 
@@ -566,12 +586,12 @@ main {
 
 
 /**
- * #clients 
+ * #technologies 
  */
 
-.clients { margin-bottom: 15px; }
+.technologies { margin-bottom: 15px; }
 
-.clients-list {
+.technologies-list {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -586,12 +606,12 @@ main {
   scroll-padding-inline: 25px;
 }
 
-.clients-item {
+.technologies-item {
   min-width: 50%;
   scroll-snap-align: start;
 }
 
-.clients-item img {
+.technologies-item img {
   width: 100%;
  
   transition: var(--transition-1);
@@ -1078,6 +1098,27 @@ textarea.form-input::-webkit-resizer { display: none; }
 
 .form-btn:disabled:hover::before { background: var(--bg-gradient-jet); }
 
+.contact-message {
+  color: var(--white-2);
+  font-size: var(--fs-7);
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.contact-form fieldset {
+  border: 1px solid var(--jet);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.contact-form legend {
+  font-size: var(--fs-6);
+  color: var(--white-2);
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
 
 
 
@@ -1093,10 +1134,10 @@ textarea.form-input::-webkit-resizer { display: none; }
 @media (min-width: 450px) {
 
   /**
-   * client
+   * technologies
    */
 
-  .clients-item { min-width: calc(33.33% - 10px); }
+  .technologies-item { min-width: calc(33.33% - 10px); }
 
 
 
@@ -1267,14 +1308,14 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   /* clients */
 
-  .clients-list {
+  .technologies-list {
     gap: 50px;
     margin: 0 -30px;
     padding: 45px;
     scroll-padding-inline: 45px;
   }
 
-  .clients-item { min-width: calc(33.33% - 35px); }
+  .technologies-item { min-width: calc(33.33% - 35px); }
 
 
 
@@ -1517,9 +1558,9 @@ textarea.form-input::-webkit-resizer { display: none; }
 
  
 
-  /* clients */
+  /* technologies */
 
-  .clients-item { min-width: calc(25% - 38px); }
+  .technologies-item { min-width: calc(25% - 38px); }
 
 
 
@@ -1532,10 +1573,10 @@ textarea.form-input::-webkit-resizer { display: none; }
 
 
   /**
-   * BLOG
+   * hobbies
    */
 
-  .blog-banner-box { height: 230px; }
+  .hobbies-banner-box { height: 230px; }
 
 }
 
