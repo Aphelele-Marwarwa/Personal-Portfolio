@@ -12,20 +12,18 @@ function openModal(imgSrc, altText) {
   // Hide the navbar
   const navbar = document.querySelector('.navbar');
   navbar.style.display = 'none';
+
+  // Get the <span> element that closes the modal
+  const span = document.getElementsByClassName('close')[0];
+
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+    modal.style.display = 'none';
+
+    // Show the navbar
+    navbar.style.display = 'block';
+  };
 }
-
-// Get the <span> element that closes the modal
-const span = document.getElementsByClassName('close')[0];
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function () {
-  const modal = document.getElementById('myModal');
-  modal.style.display = 'none';
-
-  // Show the navbar
-  const navbar = document.querySelector('.navbar');
-  navbar.style.display = 'block';
-};
 
 // Add event listeners to each image to open the modal when clicked
 const imageLinks = document.querySelectorAll('.hobbies-banner-box img');
@@ -36,17 +34,6 @@ imageLinks.forEach(link => {
   });
 });
 
-// When the user clicks anywhere outside of the modal, close the modal
-window.addEventListener('click', function (event) {
-  const modal = document.getElementById('myModal');
-  if (event.target === modal) {
-    modal.style.display = 'none';
-
-    // Show the navbar
-    const navbar = document.querySelector('.navbar');
-    navbar.style.display = 'block';
-  }
-});
 
 // Functionality for showing and hiding the sidebar on mobile
 const sidebarBtn = document.querySelector("[data-sidebar-btn]");
@@ -153,10 +140,4 @@ document.addEventListener("DOMContentLoaded", function () {
   navigationLinks[0].classList.add("active");
 });
 
-// Function to open the modal and show the sidebar image
-const sidebarImage = document.querySelector('.avatar-box img');
-sidebarImage.addEventListener('click', function () {
-  const imgSrc = this.src;
-  const altText = this.alt;
-  openModal(imgSrc, altText);
-});
+
