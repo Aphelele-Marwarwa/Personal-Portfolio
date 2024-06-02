@@ -124,35 +124,26 @@
 
     <div class="main-content">
 
-      <!--
-        - #NAVBAR
-      -->
-
-      <nav class="navbar">
-
-        <ul class="navbar-list">
-
-          <li class="navbar-item">
-            <button class="navbar-link  active" data-nav-link>About</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Resume</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Portfolio</button>
-          </li>
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Hobbies</button>
-          </li>
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Contact</button>
-          </li>
-
-        </ul>
-
-      </nav>
+<!-- #NAVBAR -->
+<nav class="navbar">
+  <ul class="navbar-list">
+    <li class="navbar-item">
+      <button class="navbar-link active" data-nav-link="about">About</button>
+    </li>
+    <li class="navbar-item">
+      <button class="navbar-link" data-nav-link="curriculum vitae">Curriculum Vitae</button>
+    </li>
+    <li class="navbar-item">
+      <button class="navbar-link" data-nav-link="portfolio">Portfolio</button>
+    </li>
+    <li class="navbar-item">
+      <button class="navbar-link" data-nav-link="hobbies">Hobbies</button>
+    </li>
+    <li class="navbar-item">
+      <button class="navbar-link" data-nav-link="contact">Contact</button>
+    </li>
+  </ul>
+</nav>
 
 
 
@@ -162,7 +153,7 @@
         - #ABOUT
       -->
 
-      <article class="about  active" data-page="about">
+      <article class="about" data-page="about" id="about">
 
         <header>
           <h2 class="h2 article-title">About me</h2>
@@ -170,22 +161,25 @@
 
         <section class="about-text">
           <p>
-            Hello, I'm Aphelele Marwarwa, a passionate individual deeply entrenched in the dynamic realm of technology!
-        </p>
-
-          <p> 
-            My expertise lies in crafting robust web and desktop applications. Whether it's building intricate web solutions, 
-            developing mobile applications, working with APIs, or performing data and systems analysis, I bring a versatile skill set to the table.
-             What sets me apart is my adaptability and willingness to learn and utilize any framework necessary to create cutting-edge solutions. 
-             I believe in leveraging technology to its fullest potential to meet the unique needs of each project.
-          <p>
-            I am currently pursuing a Diploma in Information Technology (Software Development) from Nelson Mandela University,
-             and I will be completing my third and final year in 2024. I am now seeking a part-time position as a Software Developer Intern, 
-             where I can utilize my problem-solving skills, knowledge of data structures, and proficiency in programming.
-              I am eager to join a dynamic and collaborative team that fosters innovation and allows me to continue learning and growing in my field. 
-              I am excited to contribute to challenging projects that push the boundaries of what can be achieved in the software development industry.
+              Greetings, I'm Aphelele Marwarwa, a dedicated individual deeply immersed in the dynamic realm of technology.
           </p>
-        </section>
+      
+          <p>
+              My proficiency lies in architecting robust web and desktop applications. Whether it's constructing intricate web solutions,
+              developing mobile applications, integrating with APIs, or conducting data and systems analysis, I bring forth a versatile skill set to the fore.
+              What distinguishes me is my adaptability and eagerness to learn and employ any framework requisite to craft cutting-edge solutions.
+              I firmly believe in harnessing technology to its utmost potential to address the distinctive requirements of each project.
+          </p>
+      
+          <p>
+              Presently, I am pursuing a Diploma in Information Technology (Software Development) from Nelson Mandela University,
+              set to conclude my third and final year in 2024. I am currently seeking a position as a Software Developer,
+              where I can leverage my problem-solving acumen, understanding of data structures, and programming proficiency.
+              I am keen on joining a dynamic and collaborative team that fosters innovation and provides avenues for continuous learning and growth in my field.
+              Additionally, I am enthusiastic about delving into backend development and cybersecurity domains, aiming to deepen my expertise in these areas.
+          </p>
+      </section>
+      
 
 
         <!--
@@ -253,14 +247,6 @@
         </section>
         
         
-
-
-        <!--
-          - Do not touch
-        -->
-
-    
-
         <!--
           - technologies
         -->
@@ -343,170 +329,257 @@
 
 
 
+<!--
+  #Curriculum Vitae
+-->
 
-      <!--
-        - #RESUME
-      -->
+<article class="Curriculum Vitae" data-page="curriculum vitae" id="Curriculum-Vitae">
 
-      <article class="resume" data-page="resume">
+  <header>
+    <h2 class="h2 article-title">Curriculum Vitae</h2>
+  </header>
 
-        <header>
-          <h2 class="h2 article-title">Resume</h2>
-        </header>
+  <section class="timeline">
 
-        <section class="timeline">
+    <div class="title-wrapper">
+      <div class="icon-box">
+        <ion-icon name="book-outline"></ion-icon>
+      </div>
 
-          <div class="title-wrapper">
-            <div class="icon-box">
-              <ion-icon name="book-outline"></ion-icon>
-            </div>
-
-            <h3 class="h3">Education</h3>
-          </div>
-
-          <ol class="timeline-list">
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Khanyisa High School</h4>
-
-              <span>2019 — 2021</span>
-
-              <p class="timeline-text">
-                During my time at Khanyisa High School, I was exposed to a diverse range of subjects and extracurricular
-            activities. I developed strong academic foundations while also participating in sports and community
-            service initiatives. This period helped shape my personal and academic growth, laying the groundwork for
-            my future endeavors.
-              </p>
-
-            </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Nelson Mandela University</h4>
-
-              <span>2022 — 2024</span>
-
-              <p class="timeline-text">
-                At Nelson Mandela University, I pursued a Diploma in Information Technology with a specialization in
-            Software Development. The university provided a vibrant learning environment, where I delved into various
-            aspects of software development, including programming languages, software engineering principles, and
-            application development frameworks. This comprehensive program equipped me with the knowledge and practical
-            skills necessary to excel in the field of software development.
-              </p>
-
-            </li>
-          </ol>
-
-        </section>
-
-       <section class="timeline">
-
-  <div class="title-wrapper">
-    <div class="icon-box">
-      <ion-icon name="book-outline"></ion-icon>
+      <h3 class="h3">Education</h3>
     </div>
 
-    <h3 class="h3">Experience</h3>
-  </div>
+    <ol class="timeline-list">
 
-  <ol class="timeline-list">
+      <li class="timeline-item">
 
-    <li class="timeline-item">
+        <h4 class="h4 timeline-item-title">Khanyisa High School</h4>
 
-      <h4 class="h4 timeline-item-title">Bartender at Beershack Bar Cafe</h4>
+        <span>2019 — 2021</span>
 
-      <span>2022 — 2023</span>
-      
-      <div class="image-gallery">
-        <img src="./assets/images/Me And Mr Makotsa.jpg" alt="Bartending at Beershack Bar Cafe" class="timeline-image">
-        <img src="./assets/images/collegues.jpg" alt="Bartending at Beershack Bar Cafe" class="timeline-image">
+        <p class="timeline-text">
+          During my time at Khanyisa High School, I was exposed to a diverse range of subjects and extracurricular
+          activities. I developed strong academic foundations while also participating in sports and community
+          service initiatives. This period helped shape my personal and academic growth, laying the groundwork for
+          my future endeavors.
+        </p>
+
+      </li>
+
+      <li class="timeline-item">
+
+        <h4 class="h4 timeline-item-title">Nelson Mandela University</h4>
+
+        <span>2022 — 2024</span>
+
+        <p class="timeline-text">
+          At Nelson Mandela University, I pursued a Diploma in Information Technology with a specialization in
+          Software Development. The university provided a vibrant learning environment, where I delved into various
+          aspects of software development, including programming languages, software engineering principles, and
+          application development frameworks. This comprehensive program equipped me with the knowledge and practical
+          skills necessary to excel in the field of software development.
+        </p>
+
+      </li>
+    </ol>
+
+  </section>
+
+  <section class="timeline">
+
+    <div class="title-wrapper">
+      <div class="icon-box">
+        <ion-icon name="book-outline"></ion-icon>
       </div>
-      
-      <p class="timeline-text">
-        As a bartender at Beershack Bar Cafe, I honed my skills in mixology, customer service, and teamwork. I mastered the art of crafting various cocktails and drinks, 
-        ensuring each customer received a delightful experience. Additionally, 
-        I acquired extensive knowledge of different types of liquors, beers, and wines, enabling me to provide recommendations tailored to individual preferences. 
-        My role also involved collaborating closely with my colleagues to ensure smooth operations and a positive environment for both staff and patrons.
-      </p> 
-      <br>
-      <br>
-      <p class="timeline-text">
-        Some bartender knowledge I gained includes understanding classic cocktail recipes, techniques for efficient bartending, and maintaining a clean and organized bar environment.
-         I also developed strong interpersonal skills, effectively communicating with patrons and creating a welcoming atmosphere. 
-         My ability to work well in a team contributed to an enjoyable and seamless experience for our customers.
-      </p>
 
+      <h3 class="h3">Experience</h3>
+    </div>
+
+    <ol class="timeline-list">
+
+      <li class="timeline-item">
+
+        <h4 class="h4 timeline-item-title">Bartender at Beershack Bar Cafe</h4>
+
+        <span>2022 — 2023</span>
+        
+        <div class="image-gallery">
+          <img src="./assets/images/Me And Mr Makotsa.jpg" alt="Bartending at Beershack Bar Cafe" class="timeline-image">
+          <img src="./assets/images/collegues.jpg" alt="Bartending at Beershack Bar Cafe" class="timeline-image">
+        </div>
+        
+        <p class="timeline-text">
+          As a bartender at Beershack Bar Cafe, I honed my skills in mixology, customer service, and teamwork. I mastered the art of crafting various cocktails and drinks, 
+          ensuring each customer received a delightful experience. Additionally, 
+          I acquired extensive knowledge of different types of liquors, beers, and wines, enabling me to provide recommendations tailored to individual preferences. 
+          My role also involved collaborating closely with my colleagues to ensure smooth operations and a positive environment for both staff and patrons.
+        </p> 
+        <br>
+        <br>
+        <p class="timeline-text">
+          Some bartender knowledge I gained includes understanding classic cocktail recipes, techniques for efficient bartending, and maintaining a clean and organized bar environment.
+          I also developed strong interpersonal skills, effectively communicating with patrons and creating a welcoming atmosphere. 
+          My ability to work well in a team contributed to an enjoyable and seamless experience for our customers.
+        </p>
+
+      </li>
+
+    </ol>
+
+  </section>
+
+  <section class="skill">
+
+    <h3 class="h3 skills-title">My skills</h3>
+
+    <ul class="skills-list content-card">
+
+      <li class="skills-item">
+
+        <div class="title-wrapper">
+          <h5 class="h5">Web design</h5>
+          <data value="62">62%</data>
+        </div>
+
+        <div class="skill-progress-bg">
+          <div class="skill-progress-fill" style="width: 62%;"></div>
+        </div>
+
+      </li>
+
+      <li class="skills-item">
+
+        <div class="title-wrapper">
+          <h5 class="h5">Web development </h5>
+          <data value="78">78%</data>
+        </div>
+
+        <div class="skill-progress-bg">
+          <div class="skill-progress-fill" style="width: 78%;"></div>
+        </div>
+
+      </li>
+
+      <li class="skills-item">
+        <div class="title-wrapper">
+            <h5 class="h5">Windows Desktop Development (C#)</h5>
+            <data value="75">75%</data>
+        </div>
+        <div class="skill-progress-bg">
+            <div class="skill-progress-fill" style="width: 75%;"></div>
+        </div>
     </li>
+    
+      <li class="skills-item">
 
-  </ol>
+        <div class="title-wrapper">
+          <h5 class="h5">Mobile App Development</h5>
+          <data value="56">56%</data>
+        </div>
 
-</section>
+        <div class="skill-progress-bg">
+          <div class="skill-progress-fill" style="width: 56%;"></div>
+        </div>
+
+      </li>
+
+      <li class="skills-item">
+
+        <div class="title-wrapper">
+          <h5 class="h5">Software Testing</h5>
+          <data value="70">70%</data>
+        </div>
+
+        <div class="skill-progress-bg">
+          <div class="skill-progress-fill" style="width: 70%;"></div>
+        </div>
+
+      </li>
+
+      <li class="skills-item">
+
+        <div class="title-wrapper">
+          <h5 class="h5">Problem-Solving and Algorithmic Thinking</h5>
+          <data value="80">80%</data>
+        </div>
+
+        <div class="skill-progress-bg">
+          <div class="skill-progress-fill" style="width: 80%;"></div>
+        </div>
+
+      </li>
+
+      <li class="skills-item">
+
+        <div class="title-wrapper">
+          <h5 class="h5">Debugging and Troubleshooting</h5>
+          <data value="75">75%</data>
+        </div>
+
+        <div class="skill-progress-bg">
+          <div class="skill-progress-fill" style="width: 75%;"></div>
+        </div>
+
+      </li>
+
+      <li class="skills-item">
+
+        <div class="title-wrapper">
+          <h5 class="h5">Object-Oriented Programming (OOP)</h5>
+          <data value="85">85%</data>
+        </div>
+
+        <div class="skill-progress-bg">
+          <div class="skill-progress-fill" style="width: 85%;"></div>
+        </div>
+
+      </li>
+
+      <li class="skills-item">
+
+        <div class="title-wrapper">
+          <h5 class="h5">Software Development Life Cycle (SDLC)</h5>
+          <data value="70">70%</data>
+        </div>
+
+        <div class="skill-progress-bg">
+          <div class="skill-progress-fill" style="width: 70%;"></div>
+        </div>
+
+      </li>
+
+      <li class="skills-item">
+
+        <div class="title-wrapper">
+          <h5 class="h5">Communication Skills</h5>
+          <data value="74">74%</data>
+        </div>
+
+        <div class="skill-progress-bg">
+          <div class="skill-progress-fill" style="width: 74%;"></div>
+        </div>
+
+      </li>
+
+      <li class="skills-item">
+
+        <div class="title-wrapper">
+          <h5 class="h5">Adaptivity</h5>
+          <data value="90">90%</data>
+        </div>
+
+        <div class="skill-progress-bg">
+          <div class="skill-progress-fill" style="width: 90%;"></div>
+        </div>
+
+      </li>
+    </ul>
+
+  </section>
 
 
-        <section class="skill">
+</article>
 
-          <h3 class="h3 skills-title">My skills</h3>
-
-          <ul class="skills-list content-card">
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Web design</h5>
-                <data value="58">58%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 58%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Web development </h5>
-                <data value="60">60%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 60%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Desktop Applications</h5>
-                <data value="65">65%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 65%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Database Management</h5>
-                <data value="50">50%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 50%;"></div>
-              </div>
-
-            </li>
-
-          </ul>
-
-        </section>
-
-      </article>
 
 
 
@@ -516,7 +589,7 @@
       -->
 
       
-      <article class="portfolio" data-page="portfolio">
+      <article class="portfolio" data-page="portfolio" id="portfolio">
 
         <header>
           <h2 class="h2 article-title">Portfolio</h2>
@@ -641,7 +714,7 @@
         - #Hobbies
       -->
 
-      <article class="hobbies" data-page="hobbies">
+      <article class="hobbies" data-page="hobbies" id="hobbies">
 
         <header>
           <h2 class="h2 article-title">Hobbies</h2>
@@ -650,7 +723,33 @@
         <section class="hobbies-posts">
       
           <ul class="hobbies-posts-list">
-      
+            <li class="hobbies-post-item">
+              <a href="#">
+                  <figure class="hobbies-banner-box">
+                      <img src="./assets/images/Leonardo_da_Vinci.jpg" alt="Leonardo da Vinci" loading="lazy">
+                  </figure>
+                  <div class="hobbies-content">
+                      <div class="hobbies-meta">
+                          <p class="hobbies-category">Art</p>
+                          <span class="dot"></span>
+                          <time datetime="2022-06-15">June 15 2022</time>
+                      </div>
+                      <h3 class="h3 hobbies-item-title">Leonardo da Vinci</h3>
+                      <p class="hobbies-text">
+                          Explore the life and works of the legendary artist and inventor, Leonardo da Vinci. Known for his diverse talents and groundbreaking contributions to art, science, and engineering, da Vinci's legacy continues to inspire creativity and innovation.
+                      </p>
+                      <br>
+                      <p class="hobbies-text">
+                        <strong class="quote">"Jack of all trades, master of none, though oftentimes better than master of one." - Leonardo da Vinci</strong>
+                      </p>
+                      <br>
+                      <p class="hobbies-text">
+                          As a programmer, I embody the spirit of being a jack of all trades. I thrive on adaptability and versatility, constantly learning new languages and technologies and utilizing them as needed. This approach enables me to tackle a wide range of challenges and contribute effectively to diverse projects.
+                      </p>
+                  </div>
+              </a>
+          </li>
+          
             <li class="hobbies-post-item">
               <a href="#">
       
@@ -723,7 +822,7 @@
               <a href="#">
       
                 <figure class="hobbies-banner-box">
-                  <img src="./assets/images/Can't Hurt Me - David Goggins.jpg" alt="Can't Hurt Me by David Goggins" loading="lazy">
+                  <img src="./assets/images/Can't_Hurt_Me_David_Goggins.jpg" alt="Can't Hurt Me by David Goggins" loading="lazy">
                 </figure>
       
                 <div class="hobbies-content">
@@ -757,7 +856,7 @@
               <a href="#">
       
                 <figure class="hobbies-banner-box">
-                  <img src="./assets/images/food and cooking.jpg" alt="Cooking at a young age" loading="lazy">
+                  <img src="./assets/images/food_and_cooking.jpg" alt="Cooking at a young age" loading="lazy">
                 </figure>
       
                 <div class="hobbies-content">
@@ -785,7 +884,7 @@
               <a href="#">
       
                 <figure class="hobbies-banner-box">
-                  <img src="./assets/images/Maditation by marcus aurelius.jpg	" alt="Meditations by Marcus Aurelius" loading="lazy">
+                  <img src="./assets/images/Maditation_by_marcusaurelius.jpg" alt="Meditations by Marcus Aurelius" loading="lazy">
                 </figure>
       
                 <div class="hobbies-content">
@@ -814,7 +913,7 @@
               <a href="#">
       
                 <figure class="hobbies-banner-box">
-                  <img src="./assets/images/Jordan B Peterson  12 Rules for life.jpg" alt="12 Rules for Life by Jordan B. Peterson" loading="lazy">
+                  <img src="./assets/images/12_Rules_for_life.jpg" alt="12 Rules for Life by Jordan B. Peterson" loading="lazy">
                 </figure>
       
                 <div class="hobbies-content">
@@ -842,7 +941,7 @@
               <a href="#">
       
                 <figure class="hobbies-banner-box">
-                  <img src="./assets/images/Quote by Fyodor Dostoevsky.jpg" alt="Quotes by Fyodor Dostoevsky" loading="lazy">
+                  <img src="./assets/images/Quote_by_Fyodor_Dostoevsky.jpg" alt="Quotes by Fyodor Dostoevsky" loading="lazy">
                 </figure>
       
                 <div class="hobbies-content">
@@ -865,17 +964,41 @@
       
               </a>
             </li>
+           
+            <li class="hobbies-post-item">
+              <a href="#">
+                  <figure class="hobbies-banner-box">
+                      <img src="./assets/images/How_to_Win_Friends_&_Influence-People.jpg" alt="How to Win Friends & Influence People" loading="lazy">
+                  </figure>
+                  <div class="hobbies-content">
+                      <div class="hobbies-meta">
+                          <p class="hobbies-category">Personal Development</p>
+                          <span class="dot"></span>
+                          <time datetime="2024-02-24">February 24 2024</time>
+                      </div>
+                      <h3 class="h3 hobbies-item-title">How to Win Friends & Influence People</h3>
+                      <p class="hobbies-text">
+                          Delve into the timeless advice on interpersonal skills and influence by Dale Carnegie.
+                      </p>
+                  </div>
+              </a>
+          </li>
           </ul>
-      
+        
+    <div id="myModal" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="img01">
+      <div id="caption"></div>
+    </div>
         </section>
       
       </article>
-      
+     
       <!--
         - #CONTACT
       -->
 
-      <article class="contact" data-page="contact">
+      <article class="contact" data-page="contact" id="contact">
 
         <header>
           <h2 class="h2 article-title">Contact</h2>

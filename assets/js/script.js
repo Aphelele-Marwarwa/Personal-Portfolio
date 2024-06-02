@@ -1,47 +1,86 @@
 'use strict';
 
-// Element toggle function
-const elementToggleFunc = function (elem) { 
-  elem.classList.toggle("active"); 
+// Function to open the modal and show the clicked image
+function openModal(imgSrc, altText) {
+  const modal = document.getElementById('myModal');
+  const modalImg = document.getElementById('img01');
+  const captionText = document.getElementById('caption');
+  modal.style.display = 'block';
+  modalImg.src = imgSrc;
+  captionText.innerHTML = altText;
+
+  // Hide the navbar
+  const navbar = document.querySelector('.navbar');
+  navbar.style.display = 'none';
 }
 
-// Sidebar variables
-const sidebar = document.querySelector("[data-sidebar]");
-const sidebarBtn = document.querySelector("[data-sidebar-btn]");
+// Get the <span> element that closes the modal
+const span = document.getElementsByClassName('close')[0];
 
-// Sidebar toggle functionality for mobile
-sidebarBtn.addEventListener("click", function () { 
-  elementToggleFunc(sidebar); 
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+  const modal = document.getElementById('myModal');
+  modal.style.display = 'none';
+
+  // Show the navbar
+  const navbar = document.querySelector('.navbar');
+  navbar.style.display = 'block';
+};
+
+// Add event listeners to each image to open the modal when clicked
+const imageLinks = document.querySelectorAll('.hobbies-banner-box img');
+imageLinks.forEach(link => {
+  link.addEventListener('click', function (event) {
+    event.preventDefault(); // Prevent the default behavior of the link
+    openModal(this.src, this.alt);
+  });
 });
 
-// Custom select variables
+// When the user clicks anywhere outside of the modal, close the modal
+window.addEventListener('click', function (event) {
+  const modal = document.getElementById('myModal');
+  if (event.target === modal) {
+    modal.style.display = 'none';
+
+    // Show the navbar
+    const navbar = document.querySelector('.navbar');
+    navbar.style.display = 'block';
+  }
+});
+
+// Functionality for showing and hiding the sidebar on mobile
+const sidebarBtn = document.querySelector("[data-sidebar-btn]");
+const sidebar = document.querySelector("[data-sidebar]");
+sidebarBtn.addEventListener("click", function () {
+  sidebar.classList.toggle("active");
+});
+
+// Custom select functionality
 const select = document.querySelector("[data-select]");
 const selectItems = document.querySelectorAll("[data-select-item]");
-const selectValue = document.querySelector("[data-selecct-value]");
-const filterBtn = document.querySelectorAll("[data-filter-btn]");
+const selectValue = document.querySelector("[data-select-value]");
 
-select.addEventListener("click", function () { 
-  elementToggleFunc(this); 
+select.addEventListener("click", function () {
+  select.classList.toggle("active");
 });
 
-// Add event in all select items
+// Add event listener to each select item
 selectItems.forEach(item => {
   item.addEventListener("click", function () {
-    let selectedValue = this.innerText.toLowerCase();
+    const selectedValue = this.innerText.toLowerCase();
     selectValue.innerText = this.innerText;
-    elementToggleFunc(select);
+    select.classList.remove("active");
     filterFunc(selectedValue);
   });
 });
 
-// Filter variables
+// Filter functionality
 const filterItems = document.querySelectorAll("[data-filter-item]");
+const filterBtn = document.querySelectorAll("[data-filter-btn]");
 
-const filterFunc = function (selectedValue) {
+function filterFunc(selectedValue) {
   filterItems.forEach(item => {
-    if (selectedValue === "all") {
-      item.classList.add("active");
-    } else if (selectedValue === item.dataset.category) {
+    if (selectedValue === "all" || selectedValue === item.dataset.category) {
       item.classList.add("active");
     } else {
       item.classList.remove("active");
@@ -49,30 +88,23 @@ const filterFunc = function (selectedValue) {
   });
 }
 
-// Add event in all filter button items for large screen
-let lastClickedBtn = filterBtn[0];
-
+// Add event listener to each filter button
 filterBtn.forEach(btn => {
   btn.addEventListener("click", function () {
-    let selectedValue = this.innerText.toLowerCase();
+    const selectedValue = this.innerText.toLowerCase();
     selectValue.innerText = this.innerText;
     filterFunc(selectedValue);
-
-    lastClickedBtn.classList.remove("active");
-    this.classList.add("active");
-    lastClickedBtn = this;
   });
 });
 
-// Contact form variables
+// Contact form functionality
 const form = document.querySelector("[data-form]");
-const formInputs = document.querySelectorAll("[data-form-input]");
 const formBtn = document.querySelector("[data-form-btn]");
+const formInputs = document.querySelectorAll("[data-form-input]");
 
-// Add event to all form input fields
+// Enable/disable form button based on form validation
 formInputs.forEach(input => {
   input.addEventListener("input", function () {
-    // Check form validation
     if (form.checkValidity()) {
       formBtn.removeAttribute("disabled");
     } else {
@@ -81,33 +113,50 @@ formInputs.forEach(input => {
   });
 });
 
-// Submit event for the form
-form.addEventListener('submit', function(event) {
-  // Prevent default form submission
+// Form submission event
+form.addEventListener('submit', function (event) {
   event.preventDefault();
-
-  // Perform form submission action here, e.g., sending data to server
-
-  // Reset the form after submission
+  // Perform form submission action here
   form.reset();
 });
 
-// Page navigation variables
+// Page navigation functionality
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
 
-// Add event to all nav link
-navigationLinks.forEach((navLink, i) => {
-  navLink.addEventListener("click", function () {
-    pages.forEach((page, j) => {
-      if (navLink.innerHTML.toLowerCase() === page.dataset.page) {
-        page.classList.add("active");
-        navigationLinks[j].classList.add("active");
-        window.scrollTo(0, 0);
-      } else {
-        page.classList.remove("active");
-        navigationLinks[j].classList.remove("active");
-      }
-    });
+function showPage(pageName) {
+  pages.forEach(page => {
+    if (page.dataset.page === pageName) {
+      page.classList.add("active");
+    } else {
+      page.classList.remove("active");
+    }
   });
+}
+
+navigationLinks.forEach(navLink => {
+  navLink.addEventListener("click", function () {
+    const pageName = this.innerText.toLowerCase();
+    showPage(pageName);
+
+    navigationLinks.forEach(link => {
+      link.classList.remove("active");
+    });
+    this.classList.add("active");
+    window.scrollTo(0, 0);
+  });
+});
+
+// Show the first page (About) by default
+document.addEventListener("DOMContentLoaded", function () {
+  showPage("about");
+  navigationLinks[0].classList.add("active");
+});
+
+// Function to open the modal and show the sidebar image
+const sidebarImage = document.querySelector('.avatar-box img');
+sidebarImage.addEventListener('click', function () {
+  const imgSrc = this.src;
+  const altText = this.alt;
+  openModal(imgSrc, altText);
 });
