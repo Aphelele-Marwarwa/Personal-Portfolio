@@ -57,6 +57,10 @@ selectItems.forEach(item => {
     selectValue.innerText = this.innerText;
     select.classList.remove("active");
     filterFunc(selectedValue);
+
+    // Update active class on select items
+    selectItems.forEach(item => item.classList.remove("active"));
+    this.classList.add("active");
   });
 });
 
