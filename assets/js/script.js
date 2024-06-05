@@ -34,7 +34,6 @@ imageLinks.forEach(link => {
   });
 });
 
-
 // Functionality for showing and hiding the sidebar on mobile
 const sidebarBtn = document.querySelector("[data-sidebar-btn]");
 const sidebar = document.querySelector("[data-sidebar]");
@@ -81,6 +80,10 @@ filterBtn.forEach(btn => {
     const selectedValue = this.innerText.toLowerCase();
     selectValue.innerText = this.innerText;
     filterFunc(selectedValue);
+
+    // Update active class on buttons
+    filterBtn.forEach(button => button.classList.remove("active"));
+    this.classList.add("active");
   });
 });
 
@@ -139,5 +142,3 @@ document.addEventListener("DOMContentLoaded", function () {
   showPage("about");
   navigationLinks[0].classList.add("active");
 });
-
-
