@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loading...</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: url('./assets/images/pexels-cody-berg-463684.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Arial', sans-serif;
+      color: #fff;
+      text-align: center;
+      flex-direction: column;
+    }
+
+    .intro-text {
+      font-size: 36px;
+      color: #fff;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 2px #000;
+    }
+
+    .profile-pic {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      border: 4px solid #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .btn {
+      padding: 10px 20px;
+      font-size: 16px;
+      color: #fff;
+      background-color: transparent;
+      border: 2px solid #3498db;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn:hover {
+      background-color: rgba(52, 152, 219, 0.1);
+      color: #3498db;
+      border-color: #fff;
+    }
+
+    .hidden {
+      visibility: hidden;
+    }
+  </style>
+</head>
+<body>
+  <img src="./assets/images/Premium Vector _ Cyber attack.jpeg" alt="Profile Picture" class="profile-pic">
+  <div id="intro-text" class="intro-text"></div>
+  <a href="homepage.html" class="btn">View Portfolio</a>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const text = "Hi, I'm Aphelele Marwarwa\nSoftware Developer";
+      const introText = document.getElementById("intro-text");
+
+      let index = 0;
+      function animateText() {
+        if (index < text.length) {
+          if (text[index] === '\n') {
+            introText.innerHTML += '<br>';
+          } else {
+            introText.innerHTML += text[index];
+          }
+          index++;
+          setTimeout(animateText, 100); // Adjust speed here
+        }
+      }
+      animateText();
+    });
+  </script>
+</body>
+</html>
