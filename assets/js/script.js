@@ -91,29 +91,54 @@ filterBtn.forEach(btn => {
   });
 });
 
-// Contact form functionality
-const form = document.querySelector("[data-form]");
-const formBtn = document.querySelector("[data-form-btn]");
-const formInputs = document.querySelectorAll("[data-form-input]");
+const form = document.getElementById('contactForm');
+const inputs = form.querySelectorAll('[data-form-input]');
+const submitButton = form.querySelector('[data-form-btn]');
+const formMessage = document.getElementById('formMessage');
 
-// Enable/disable form button based on form validation
-formInputs.forEach(input => {
-  input.addEventListener("input", function () {
-    if (form.checkValidity()) {
-      formBtn.removeAttribute("disabled");
-    } else {
-      formBtn.setAttribute("disabled", "");
-    }
+// Enable the submit button when all inputs are filled
+inputs.forEach(input => {
+  input.addEventListener('input', () => {
+    submitButton.disabled = ![...inputs].every(input => input.value);
   });
 });
 
 // Form submission event
-form.addEventListener('submit', function (event) {
+form.addEventListener('submit', async function (event) {
   event.preventDefault();
-  // Perform form submission action here
-  form.reset();
-});
+  
+  // Optional: show loading state
+  submitButton.disabled = true;
+  formMessage.textContent = "Sending message...";
+  formMessage.style.color = "blue";
 
+  try {
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 
+        'Accept': 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    });
+
+    if (response.ok) {
+      formMessage.textContent = "Thank you! Your message has been sent.";
+      formMessage.style.color = "green";
+      form.reset();
+    } else {
+      const errorData = await response.json();
+      formMessage.textContent = `Oops! Error: ${errorData.error || "Unknown error occurred"}`;
+      formMessage.style.color = "red";
+    }
+  } catch (error) {
+    formMessage.textContent = "Oops! There was a problem sending your message. Check console for more details.";
+    console.error("Submission Error:", error);
+    formMessage.style.color = "red";
+  } finally {
+    submitButton.disabled = true; // Keep it disabled until new input
+  }
+});
 // Page navigation functionality
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");

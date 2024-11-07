@@ -999,7 +999,7 @@
         <section class="contact-form">
           <h3 class="h3 form-title">Contact Form</h3>
           <p class="contact-message">Thank you for visiting my portfolio! I'm passionate about software development and eager to contribute my skills to your team. Whether you have a job opportunity, a project idea, or just want to connect, I'd love to hear from you. Feel free to reach out, and let's discuss how we can work together.</p>
-          <form action="https://formspree.io/f/xrgnvdyb" method="post" class="form" data-form>
+          <form action="https://formspree.io/f/xrgnvdyb" method="POST" class="form" data-form id="contactForm">
             <fieldset>
               <legend>Send me a message</legend>
               <div class="input-wrapper">
@@ -1011,6 +1011,7 @@
                 <ion-icon name="paper-plane"></ion-icon>
                 <span>Send Message</span>
               </button>
+              <p id="formMessage" class="form-message"></p> <!-- Placeholder for form messages -->
             </fieldset>
           </form>
         </section>
