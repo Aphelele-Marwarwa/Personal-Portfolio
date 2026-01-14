@@ -754,7 +754,20 @@ main {
   border-radius: inherit;
 }
 
+.skill-subtext {
+  color: var(--light-gray); /* or any color you prefer, e.g., #888, #555, etc. */
+  font-size: var(--fs-8); /* optional: adjust font size */
+}
 
+
+.social-link.linkedin-link {
+  color: #0A66C2; /* LinkedIn Blue */
+  transition: transform 0.3s;
+}
+
+.social-link.linkedin-link:hover {
+  transform: scale(1.2); /* small hover animation */
+}
 
 
 
