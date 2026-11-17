@@ -1,940 +1,1140 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aphelele-Marwarwa Portfolio</title>
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#161616">
 
-  <!--
-    - favicon
-  -->
+  <title>Aphelele Marwarwa | Cybersecurity & Software Developer</title>
+  <meta name="description" content="Portfolio of Aphelele Ayolisile Marwarwa: cybersecurity and software developer (C#/.NET, React, Python), completing a Postgraduate Diploma in Cybersecurity at Nelson Mandela University.">
+  <meta name="author" content="Aphelele Ayolisile Marwarwa">
+  <meta name="keywords" content="cybersecurity, software developer, C#, .NET, ASP.NET Core, React, Python, SIEM, OWASP, social engineering, Hyperledger Fabric, South Africa">
+  <link rel="canonical" href="https://aphelele-marwarwa.github.io/Personal-Portfolio/">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Aphelele Marwarwa | Cybersecurity & Software Developer">
+  <meta property="og:description" content="Secure full-stack development, SIEM evaluation, OWASP-driven risk assessment and research on tamper-evident banking data.">
+  <meta property="og:url" content="https://aphelele-marwarwa.github.io/Personal-Portfolio/">
+  <meta property="og:image" content="./assets/images/Aphele.jpg">
+  <meta name="twitter:card" content="summary">
+
+  <!-- Favicon -->
   <link rel="shortcut icon" href="./assets/images/Aphelele Marwarwa.png" type="image/x-icon">
 
-  <!--
-    - custom css link
-  -->
+  <!-- Custom CSS -->
   <link rel="stylesheet" href="./assets/css/style.css">
 
-  <!--
-    - google font link
-  -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Aphelele Ayolisile Marwarwa",
+    "jobTitle": "Cybersecurity & Software Developer",
+    "email": "mailto:marwarwa.ap@gmail.com",
+    "telephone": "+27825918034",
+    "url": "https://aphelele-marwarwa.github.io/Personal-Portfolio/",
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "Nelson Mandela University" },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Lusikisiki",
+      "addressRegion": "Eastern Cape",
+      "addressCountry": "ZA"
+    },
+    "sameAs": [
+      "https://github.com/Aphelele-Marwarwa",
+      "https://www.linkedin.com/in/aphelele-marwarwa"
+    ],
+    "knowsAbout": ["Cybersecurity", "Secure software development", "C#", ".NET", "React", "Python", "SIEM", "OWASP", "Social engineering awareness"]
+  }
+  </script>
 </head>
 
 <body>
 
-  <!--
-    - #MAIN
-  -->
+  <!-- Accessibility: skip link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Scroll progress bar -->
+  <div class="scroll-progress" id="scrollProgress" role="progressbar" aria-label="Page scroll progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+
+  <!-- Page loader -->
+  <div class="page-loader" id="pageLoader" aria-hidden="true">
+    <span class="loader-text">&lt;AM /&gt;</span>
+  </div>
+
+  <noscript>
+    <p class="noscript-msg">JavaScript is turned off. The site still works, but filters, theme switching and animations are disabled.</p>
+  </noscript>
+
+  <!-- Toast notifications -->
+  <div class="toast-region" id="toastRegion" role="status" aria-live="polite"></div>
 
   <main>
 
-    <!--
-      - #SIDEBAR
-    -->
-
-    <aside class="sidebar" data-sidebar>
+    <!-- #SIDEBAR -->
+    <aside class="sidebar" data-sidebar aria-label="Profile and contact details">
       <div class="sidebar-info">
         <figure class="avatar-box">
-          <img src="./assets/images/Aphele.jpg" alt="Aphelele Marwarwa" width="80">
+          <img src="./assets/images/Aphele.jpg" alt="Portrait of Aphelele Marwarwa" width="80" height="80">
         </figure>
+
         <div class="info-content">
           <h1 class="name" title="Aphelele Marwarwa">Aphelele Marwarwa</h1>
-          <p class="title">Software Developer (Security-Focused)</p>
+          <p class="title">Cybersecurity &amp; Software Developer</p>
+          <p class="typed-line" aria-live="off">
+            <span id="typedText" data-typed='["Secure full-stack developer","Cybersecurity intern","SIEM &amp; OWASP practitioner","Researcher: tamper-evident banking data"]'>Secure full-stack developer</span><span class="typed-cursor" aria-hidden="true">|</span>
+          </p>
+          <p class="status-badge"><span class="status-dot" aria-hidden="true"></span> Open to entry-level opportunities</p>
         </div>
-        <button class="info_more-btn" data-sidebar-btn>
+
+        <button class="info_more-btn" data-sidebar-btn aria-expanded="false" aria-controls="sidebarMore">
           <span>Show Contacts</span>
-          <ion-icon name="chevron-down"></ion-icon>
+          <ion-icon name="chevron-down" aria-hidden="true"></ion-icon>
         </button>
       </div>
-      
-    
-      <div class="sidebar-info_more">
+
+      <div class="sidebar-info_more" id="sidebarMore">
         <div class="separator"></div>
+
         <ul class="contacts-list">
           <li class="contact-item">
-            <div class="icon-box">
-              <ion-icon name="mail-outline"></ion-icon>
-            </div>
+            <div class="icon-box"><ion-icon name="mail-outline" aria-hidden="true"></ion-icon></div>
             <div class="contact-info">
               <p class="contact-title">Email</p>
               <a href="mailto:marwarwa.ap@gmail.com" class="contact-link">marwarwa.ap@gmail.com</a>
             </div>
           </li>
+
           <li class="contact-item">
-            <div class="icon-box">
-              <ion-icon name="phone-portrait-outline"></ion-icon>
-            </div>
+            <div class="icon-box"><ion-icon name="phone-portrait-outline" aria-hidden="true"></ion-icon></div>
             <div class="contact-info">
               <p class="contact-title">Phone</p>
               <a href="tel:+27825918034" class="contact-link">082 591 8034</a>
             </div>
           </li>
-         
+
           <li class="contact-item">
-            <div class="icon-box">
-              <ion-icon name="location-outline"></ion-icon>
-            </div>
+            <div class="icon-box"><ion-icon name="location-outline" aria-hidden="true"></ion-icon></div>
             <div class="contact-info">
               <p class="contact-title">Home Address</p>
-              <address>Ndimbaneni, Lusikisi, Eastern Cape, South Africa</address>
+              <address>Ndimbaneni, Lusikisiki, Eastern Cape, South Africa</address>
+            </div>
+          </li>
+
+          <li class="contact-item">
+            <div class="icon-box"><ion-icon name="car-outline" aria-hidden="true"></ion-icon></div>
+            <div class="contact-info">
+              <p class="contact-title">Driver&rsquo;s License</p>
+              <p class="contact-text">Code C1</p>
             </div>
           </li>
         </ul>
+
         <div class="separator"></div>
+
         <ul class="social-list">
           <li class="social-item">
-            <a href="https://wa.me/27825918034" class="social-link" data-title="WhatsApp me">
-              <ion-icon name="logo-whatsapp"></ion-icon>
+            <a href="https://wa.me/27825918034" class="social-link" data-title="WhatsApp me" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+              <ion-icon name="logo-whatsapp" aria-hidden="true"></ion-icon>
             </a>
           </li>
           <li class="social-item">
-            <a href="https://github.com/Aphelele-Marwarwa" class="social-link" data-title="View GitHub profile">
-              <ion-icon name="logo-github"></ion-icon>
+            <a href="https://github.com/Aphelele-Marwarwa" class="social-link" data-title="View GitHub profile" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <ion-icon name="logo-github" aria-hidden="true"></ion-icon>
             </a>
           </li>
           <li class="social-item">
-            <a href="https://www.linkedin.com/in/aphelele-marwarwa" class="social-link" data-title="View LinkedIn">
-              <ion-icon name="logo-linkedin"></ion-icon>
+            <a href="https://www.linkedin.com/in/aphelele-marwarwa" class="social-link" data-title="View LinkedIn" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <ion-icon name="logo-linkedin" aria-hidden="true"></ion-icon>
             </a>
           </li>
-           <li class="social-item">
-            <a href="mailto:marwarwa.ap@gmail.com" class="social-link" data-title="Email">
-                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 24" width="21" height="21"><path d="M29.986 27.715H2.008C.915 27.715 0 26.85 0 25.733V6.376A2.01 2.01 0 0 1 2.008 4.37h27.978c1.093 0 2.008.9 2.008 2.008v19.33c-.025 1.144-.915 2.008-2.008 2.008z" fill="#f2f2f2"/><path d="M4 27.715l11.97-8.76.076-.508L3.7 9.578l-.025 17.705z" opacity=".1" fill="#221f1f"/><g fill="#d44c3d"><path d="M2.008 27.715C.9 27.715 0 26.85 0 25.733V6.35c0-1.118.9-1.32 2.008-1.32s2.008.23 2.008 1.32v21.364z"/><path d="M2.008 5.334c1.423 0 1.703.432 1.703 1.016v21.084H2.008c-.94 0-1.703-.762-1.703-1.703V6.35c-.025-.6.28-1.016 1.703-1.016zm0-.28C.9 5.055 0 5.283 0 6.35v19.356a1.98 1.98 0 0 0 2.008 2.008h2.008V6.35C4 5.258 3.126 5.055 2.008 5.055zm27.978.28c1.296 0 1.703.254 1.703.966v19.458c0 .94-.762 1.703-1.703 1.703h-1.703V6.3c-.025-.737.407-.966 1.703-.966zm0-.28c-1.118 0-2.008.152-2.008 1.245v21.44h2.008c1.118 0 2.008-.9 2.008-2.008V6.274c-.025-1.093-.915-1.22-2.008-1.22z"/><path d="M29.986 27.715h-2.008V6.3c0-1.118.9-1.245 2.008-1.245s2.008.152 2.008 1.245v19.458a2 2 0 0 1-2.008 1.957z"/></g><path d="M21.422 27.715L.178 7.2l1.118.457 14.8 10.647L31.993 6.63v19.128a1.99 1.99 0 0 1-2.008 1.982z" opacity=".08" fill="#221f1f"/><g fill="#d44c3d"><path d="M15.96 18.98L.864 8.028c-.9-.66-1.144-1.93-.483-2.82s1.93-1.093 2.846-.432l12.757 9.275L28.817 4.65c.9-.66 2.135-.457 2.795.457.66.9.457 2.135-.457 2.795z"/><path d="M29.986 4.572c.534 0 1.067.254 1.398.712.534.762.38 1.83-.38 2.4L15.96 18.625 1.042 7.8C.28 7.24.076 6.147.6 5.4c.305-.457.84-.737 1.423-.737.38 0 .737.102 1.016.33l12.73 9.25.178.102.178-.102 12.82-9.393c.33-.178.66-.28 1.042-.28zm0-.305c-.407 0-.84.102-1.17.38L15.984 14.05 3.202 4.75c-.33-.254-.762-.38-1.194-.38-.635.025-1.27.305-1.652.84-.635.9-.38 2.135.508 2.795L15.96 18.98 31.155 7.9a2.02 2.02 0 0 0 .457-2.795c-.407-.534-1.016-.84-1.626-.84z"/></g></svg>
+          <li class="social-item">
+            <a href="mailto:marwarwa.ap@gmail.com" class="social-link" data-title="Email" aria-label="Email">
+              <ion-icon name="mail" aria-hidden="true"></ion-icon>
             </a>
           </li>
-        </ul>        
+        </ul>
+
+        <div class="separator"></div>
+
+        <div class="sidebar-actions">
+          <a href="./assets/Aphelele_Marwarwa_CV.pdf" class="btn btn-primary" download>
+            <ion-icon name="download-outline" aria-hidden="true"></ion-icon>
+            <span>Download CV (PDF)</span>
+          </a>
+          <button type="button" class="btn btn-ghost" id="themeToggle" aria-pressed="false" aria-label="Switch between dark and light theme">
+            <ion-icon name="contrast-outline" aria-hidden="true"></ion-icon>
+            <span>Toggle theme</span>
+          </button>
+        </div>
       </div>
     </aside>
- 
 
-    <!--
-      - #main-content
-    -->
 
-    <div class="main-content">
+    <!-- #MAIN CONTENT -->
+    <div class="main-content" id="main-content" tabindex="-1">
 
-<!-- #NAVBAR -->
-<nav class="navbar">
-  <ul class="navbar-list">
-    <li class="navbar-item">
-      <button class="navbar-link active" data-nav-link="about">About</button>
-    </li>
-    <li class="navbar-item">
-      <button class="navbar-link" data-nav-link="curriculum vitae">Curriculum Vitae</button>
-    </li>
-    <li class="navbar-item">
-      <button class="navbar-link" data-nav-link="portfolio">Portfolio</button>
-    </li>
-   <!-- <li class="navbar-item">
-      <button class="navbar-link" data-nav-link="hobbies">Hobbies</button>
-    </li> -->
-    <li class="navbar-item">
-      <button class="navbar-link" data-nav-link="contact">Contact</button>
-    </li>
-  </ul>
-</nav>
+      <!-- #NAVBAR -->
+      <nav class="navbar" aria-label="Primary">
+        <ul class="navbar-list" role="tablist">
+          <li class="navbar-item"><button class="navbar-link active" data-nav-link="about" role="tab" aria-selected="true">About</button></li>
+          <li class="navbar-item"><button class="navbar-link" data-nav-link="curriculum vitae" role="tab" aria-selected="false">Curriculum Vitae</button></li>
+          <li class="navbar-item"><button class="navbar-link" data-nav-link="portfolio" role="tab" aria-selected="false">Portfolio</button></li>
+          <li class="navbar-item"><button class="navbar-link" data-nav-link="security" role="tab" aria-selected="false">Cyber &amp; Social Eng.</button></li>
+          <li class="navbar-item"><button class="navbar-link" data-nav-link="research" role="tab" aria-selected="false">Research</button></li>
+          <li class="navbar-item"><button class="navbar-link" data-nav-link="hobbies" role="tab" aria-selected="false">Hobbies</button></li>
+          <li class="navbar-item"><button class="navbar-link" data-nav-link="contact" role="tab" aria-selected="false">Contact</button></li>
+        </ul>
+      </nav>
 
-      <!--
-        - #ABOUT
-      -->
 
+      <!-- #ABOUT -->
       <article class="about" data-page="about" id="about">
 
         <header>
           <h2 class="h2 article-title">About me</h2>
         </header>
 
-      <section class="about-text">
-        <p>
-          Greetings, I’m Aphelele Marwarwa, a technology-focused professional with a strong foundation in software development
-          and a growing specialization in cybersecurity.
-        </p>
+        <section class="about-text">
+          <p>
+            Greetings, I&rsquo;m Aphelele Marwarwa, a cybersecurity and software development professional from
+            Lusikisiki in the Eastern Cape. I build secure full-stack applications and evaluate enterprise
+            security platforms, and I am completing a Postgraduate Diploma in Cybersecurity at Nelson Mandela University.
+          </p>
 
-        <p>
-          I have hands-on experience in building web applications, developing mobile solutions, integrating APIs,
-          and working with data-driven systems. I am adaptable and continuously expanding my skill set, enabling me
-          to work across multiple frameworks and technologies to deliver efficient, secure, and scalable solutions.
-        </p>
+          <p>
+            On the development side I work with C#, ASP.NET Core, Python, JavaScript/TypeScript and React, backed by
+            SQL Server, PostgreSQL and SQLite. On the security side, my internship at Minerva Group had me
+            evaluating Splunk, IBM QRadar and Fortinet, applying OWASP principles to identify vulnerabilities,
+            assess risk and formulate remediation strategies.
+          </p>
 
-        <p>
-          I hold a Diploma in Information Technology (Software Development) and an Advanced Diploma in Information Technology
-          from Nelson Mandela University, and I am currently pursuing a Postgraduate Diploma in Cybersecurity.
-          I am seeking an entry-level role where I can apply my problem-solving abilities, solid understanding of data
-          structures, and secure coding practices within a collaborative environment. My interests lie particularly in
-          backend development, application security, and cybersecurity-focused roles.
-        </p>
-      </section>
+          <p>
+            I also built and launched a live e-commerce platform for a client, with REST APIs, PayFast payment
+            integration, audit logging and web analytics. I am seeking an entry-level role, ideally a rotation-based
+            graduate programme, where I can apply secure coding practices, problem-solving and technical
+            documentation skills in a collaborative environment.
+          </p>
+        </section>
 
+        <!-- Quick facts -->
+        <section class="quick-facts" aria-label="Quick facts">
+          <ul class="stats-list">
+            <li class="stat-item"><span class="stat-number" data-count-to="12">12</span><span class="stat-label">Enterprise platforms evaluated</span></li>
+            <li class="stat-item"><span class="stat-number" data-count-to="3">3</span><span class="stat-label">SIEM / security platforms used (Splunk, QRadar, Fortinet)</span></li>
+            <li class="stat-item"><span class="stat-number" data-count-to="20">20</span><span class="stat-label">Papers in my literature review</span></li>
+            <li class="stat-item"><span class="stat-number" data-count-to="1">1</span><span class="stat-label">Live client platform launched</span></li>
+          </ul>
+        </section>
 
-
-        <!--
-          - service
-        -->
+        <!-- What I do -->
         <section class="service">
+          <h3 class="h3 service-title">What I Do</h3>
 
-  <h3 class="h3 service-title">What I Do</h3>
+          <ul class="service-list">
+            <li class="service-item">
+              <div class="service-icon-box">
+                <img src="./assets/images/web-development-image.webp" alt="" width="100" height="100" loading="lazy">
+              </div>
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Secure Software &amp; Application Development</h4>
+                <p class="service-item-text">
+                  Web, desktop and API development with C#/ASP.NET Core, Node.js/Express, React and Python,
+                  with authentication, input validation and audit logging designed in from the start.
+                </p>
+              </div>
+            </li>
 
-  <ul class="service-list">
+            <li class="service-item">
+              <div class="service-icon-box">
+                <img src="./assets/images/Cyber-Security-Icon.jpeg" alt="" width="100" height="100" loading="lazy">
+              </div>
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Cybersecurity, SIEM &amp; Risk Assessment</h4>
+                <p class="service-item-text">
+                  Log analysis and threat detection with Splunk, IBM QRadar and Fortinet; OWASP-based
+                  vulnerability and risk assessment; root cause analysis and remediation planning.
+                </p>
+              </div>
+            </li>
 
-    <li class="service-item">
-      <div class="service-icon-box">
-        <img src="./assets/images/web-development-image.webp" alt="Software Development icon" width="100">
-      </div>
-      <div class="service-content-box">
-        <h4 class="h4 service-item-title">Software & Application Development</h4>
-        <p class="service-item-text">
-          Design and development of web, desktop, and mobile applications using modern technologies, focusing on
-          performance, scalability, and business requirements.
-        </p>
-      </div>
-    </li>
+            <li class="service-item">
+              <div class="service-icon-box">
+                <img src="./assets/images/Cyber-Security-Icon.jpeg" alt="" width="100" height="100" loading="lazy">
+              </div>
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Penetration Testing &amp; Social Engineering Awareness</h4>
+                <p class="service-item-text">
+                  Reconnaissance, vulnerability scanning and traffic analysis with Kali Linux tooling, plus a
+                  strong focus on the human factor: phishing, pretexting, insider threats and security awareness.
+                </p>
+              </div>
+            </li>
 
-    <li class="service-item">
-      <div class="service-icon-box">
-        <img src="./assets/images/Database Management.png" alt="Database & Data icon" width="100">
-      </div>
-      <div class="service-content-box">
-        <h4 class="h4 service-item-title">Databases & Data Analysis</h4>
-        <p class="service-item-text">
-          Database design and management using SQL, combined with data analysis to support informed,
-          data-driven decision-making.
-        </p>
-      </div>
-    </li>
+            <li class="service-item">
+              <div class="service-icon-box">
+                <img src="./assets/images/Database Management.png" alt="" width="100" height="100" loading="lazy">
+              </div>
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Databases &amp; Data Analysis</h4>
+                <p class="service-item-text">
+                  Relational design in SQL Server, PostgreSQL and SQLite, with stored procedures, reporting
+                  queries and data verification routines to support data-driven decisions.
+                </p>
+              </div>
+            </li>
 
-    <li class="service-item">
-      <div class="service-icon-box">
-        <img src="./assets/images/Operating_systems.webp" alt="Operating Systems & Networking icon" width="100">
-      </div>
-      <div class="service-content-box">
-        <h4 class="h4 service-item-title">Operating Systems, Networking & IT Support</h4>
-        <p class="service-item-text">
-          Administration and support of operating systems and networks, including Windows systems,
-          LAN/WAN networking, CPU and RAM management, memory allocation, process scheduling,
-          and troubleshooting hardware and software issues.
-        </p>
-      </div>
-    </li>
+            <li class="service-item">
+              <div class="service-icon-box">
+                <img src="./assets/images/Operating_systems.webp" alt="" width="100" height="100" loading="lazy">
+              </div>
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Systems, Networking &amp; L2 Support</h4>
+                <p class="service-item-text">
+                  Windows and Linux (Ubuntu, Kali), TCP/IP, LAN/WAN, second-level issue analysis, bug
+                  reproduction and clear technical documentation.
+                </p>
+              </div>
+            </li>
 
-    <li class="service-item">
-      <div class="service-icon-box">
-        <img src="./assets/images/Cyber-Security-Icon.jpeg" alt="Cybersecurity icon" width="100">
-      </div>
-      <div class="service-content-box">
-        <h4 class="h4 service-item-title">Cybersecurity & System Protection</h4>
-        <p class="service-item-text">
-          Application of cybersecurity principles to protect systems, networks, and applications through secure
-          design, risk awareness, and threat mitigation.
-        </p>
-      </div>
-    </li>
+            <li class="service-item">
+              <div class="service-icon-box">
+                <img src="./assets/images/IT-Architecture-scaled-1.jpg" alt="" width="100" height="100" loading="lazy">
+              </div>
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Architecture &amp; Platform Evaluation</h4>
+                <p class="service-item-text">
+                  Evaluating platforms on coverage, integration, automation, visibility and resilience, and
+                  designing scalable, maintainable, secure solutions.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </section>
 
-    <li class="service-item">
-      <div class="service-icon-box">
-        <img src="./assets/images/IT-Architecture-scaled-1.jpg" alt="Software Architecture icon" width="100">
-      </div>
-      <div class="service-content-box">
-        <h4 class="h4 service-item-title">Software Architecture & Design</h4>
-        <p class="service-item-text">
-          Designing scalable, maintainable, and secure software solutions using sound architectural
-          principles and best practices.
-        </p>
-      </div>
-    </li>
-
-  </ul>
-
-</section>
-
-        
-        
-        <!--
-          - technologies
-        -->
-
+        <!-- Technologies -->
         <section class="technologies">
           <h3 class="h3 technologies-title">Technologies</h3>
           <ul class="technologies-list has-scrollbar">
-            <li class="technologies-item">
-              <a href="#" title="C#">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" height="50" alt="C# logo">
-              </a>
-            </li>
-            <li class="technologies-item">
-              <a href="#" title="DotNet Core">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg" height="50" alt="DotNet Core logo">
-              </a>
-            </li>
-            <li class="technologies-item">
-              <a href="#" title="Visual Studio">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-plain.svg" height="50" alt="Visual Studio logo">
-              </a>
-            </li>
-            <li class="technologies-item">
-              <a href="#" title="VS Code">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" height="50" alt="VS Code logo">
-              </a>
-            </li>
-            <li class="technologies-item">
-              <a href="#" title="Microsoft SQL Server">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-plain-wordmark.svg" height="50" alt="Microsoft SQL Server logo">
-              </a>
-            </li>
-            <li class="technologies-item">
-              <a href="#" title="SQL Developer">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqldeveloper/sqldeveloper-original.svg" height="50" alt="SQL Developer logo">
-              </a>
-            </li>
-            <li class="technologies-item">
-              <a href="#" title="JavaScript">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="50" alt="JavaScript logo">
-              </a>
-            </li>
-            <li class="technologies-item">
-              <a href="#" title="HTML5">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" height="50" alt="HTML5 logo">
-              </a>
-            </li>
-            <li class="technologies-item">
-              <a href="#" title="CSS3">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" height="50" alt="CSS3 logo">
-              </a>
-            </li>
-            <li class="technologies-item">
-              <a href="#" title="jQuery">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jquery/jquery-original.svg" height="50" alt="jQuery logo">
-              </a>
-            </li>
-            <li class="technologies-item">
-              <a href="#" title="Git">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" height="50" alt="Git logo">
-              </a>
-            </li>
-            <li class="technologies-item">
-              <a href="#" title="LinkedIn">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" height="50" alt="LinkedIn logo">
-              </a>
-            </li>
-            <li class="technologies-item">
-              <a href="#" title="Python">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" height="50" alt="Python logo">
-              </a>
-            </li>
-            <li class="technologies-item">
-              <a href="#" title="Kali Linux">
-                <img src="https://www.kali.org/images/kali-logo.svg" height="50" alt="Kali Linux logo">
-              </a>
-            </li>
-
+            <li class="technologies-item"><a href="#" title="C#"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" height="50" alt="C#" loading="lazy"></a></li>
+            <li class="technologies-item"><a href="#" title=".NET / ASP.NET Core"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg" height="50" alt=".NET Core" loading="lazy"></a></li>
+            <li class="technologies-item"><a href="#" title="React"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height="50" alt="React" loading="lazy"></a></li>
+            <li class="technologies-item"><a href="#" title="TypeScript"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" height="50" alt="TypeScript" loading="lazy"></a></li>
+            <li class="technologies-item"><a href="#" title="JavaScript"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="50" alt="JavaScript" loading="lazy"></a></li>
+            <li class="technologies-item"><a href="#" title="Node.js"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" height="50" alt="Node.js" loading="lazy"></a></li>
+            <li class="technologies-item"><a href="#" title="Python"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" height="50" alt="Python" loading="lazy"></a></li>
+            <li class="technologies-item"><a href="#" title="PostgreSQL"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" height="50" alt="PostgreSQL" loading="lazy"></a></li>
+            <li class="technologies-item"><a href="#" title="Microsoft SQL Server"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain-wordmark.svg" height="50" alt="SQL Server" loading="lazy"></a></li>
+            <li class="technologies-item"><a href="#" title="SQLite"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg" height="50" alt="SQLite" loading="lazy"></a></li>
+            <li class="technologies-item"><a href="#" title="HTML5"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" height="50" alt="HTML5" loading="lazy"></a></li>
+            <li class="technologies-item"><a href="#" title="CSS3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" height="50" alt="CSS3" loading="lazy"></a></li>
+            <li class="technologies-item"><a href="#" title="Git"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" height="50" alt="Git" loading="lazy"></a></li>
+            <li class="technologies-item"><a href="#" title="Visual Studio"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-plain.svg" height="50" alt="Visual Studio" loading="lazy"></a></li>
+            <li class="technologies-item"><a href="#" title="VS Code"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" height="50" alt="VS Code" loading="lazy"></a></li>
+            <li class="technologies-item"><a href="#" title="Bash"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" height="50" alt="Bash" loading="lazy"></a></li>
+            <li class="technologies-item"><a href="#" title="PowerShell"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/powershell/powershell-original.svg" height="50" alt="PowerShell" loading="lazy"></a></li>
+            <li class="technologies-item"><a href="#" title="Linux"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" height="50" alt="Linux" loading="lazy"></a></li>
+            <li class="technologies-item"><a href="#" title="Kali Linux"><img src="https://www.kali.org/images/kali-logo.svg" height="50" alt="Kali Linux" loading="lazy"></a></li>
           </ul>
         </section>
-        
-        
 
       </article>
 
 
+      <!-- #CURRICULUM VITAE -->
+      <article class="Curriculum Vitae" data-page="curriculum vitae" id="Curriculum-Vitae">
+
+        <header>
+          <h2 class="h2 article-title">Curriculum Vitae</h2>
+        </header>
+
+        <!-- Professional summary -->
+        <section class="cv-summary">
+          <h3 class="h3">Professional Summary</h3>
+          <p class="timeline-text">
+            Cybersecurity and software development professional completing a Postgraduate Diploma in Cybersecurity,
+            with hands-on experience building secure full-stack applications and evaluating enterprise security
+            platforms. Experienced in Agile/Scrum settings, cross-functional collaboration, technical documentation
+            and second-level issue analysis.
+          </p>
+          <a href="./assets/Aphelele_Marwarwa_CV.pdf" class="btn btn-primary" download>
+            <ion-icon name="download-outline" aria-hidden="true"></ion-icon>
+            <span>Download full CV (PDF)</span>
+          </a>
+        </section>
+
+        <!-- Experience -->
+        <section class="timeline">
+          <div class="title-wrapper">
+            <div class="icon-box"><ion-icon name="briefcase-outline" aria-hidden="true"></ion-icon></div>
+            <h3 class="h3">Experience</h3>
+          </div>
+
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">Cybersecurity Intern &mdash; Minerva Group</h4>
+              <span>June 2026 &mdash; September 2026</span>
+              <ul class="timeline-bullets">
+                <li>Worked with engineering teams to evaluate enterprise platforms (Splunk, IBM QRadar, Fortinet), analysing application telemetry, tracking logs and web traffic monitoring.</li>
+                <li>Applied secure coding and architecture principles (OWASP) to identify vulnerabilities, assess risk and formulate sustainable remediation strategies.</li>
+                <li>Authored architectural documentation evaluating 12 platforms across visibility, integration, resilience and performance metrics (MTTD/MTTR).</li>
+              </ul>
+              <ul class="tag-list" aria-label="Skills used">
+                <li class="tag">Splunk</li><li class="tag">IBM QRadar</li><li class="tag">Fortinet</li><li class="tag">OWASP</li><li class="tag">Risk assessment</li><li class="tag">Technical writing</li>
+              </ul>
+            </li>
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">Freelance Full-Stack Developer &mdash; M.Com Electronics</h4>
+              <span>2026 &middot; Digital Sales client project</span>
+              <ul class="timeline-bullets">
+                <li>Developed a responsive React e-commerce application with dynamic product catalogues, cart/checkout flows, user accounts and an administrative sales dashboard.</li>
+                <li>Designed modular, reusable UI components and single-page routes using React Router and modern JavaScript/TypeScript practices.</li>
+                <li>Integrated ASP.NET Core and Node.js/Express REST APIs with the PayFast payment gateway.</li>
+                <li>Implemented web analytics, user activity logging, audit tracking and stock movement telemetry.</li>
+                <li>Provided post-launch support: resolved second-level issues, reproduced bugs and published technical documentation.</li>
+              </ul>
+              <p class="project-links">
+                <a href="https://www.m-com-electronics.site/" target="_blank" rel="noopener noreferrer" class="text-link">
+                  <ion-icon name="open-outline" aria-hidden="true"></ion-icon> View live platform
+                </a>
+              </p>
+              <ul class="tag-list" aria-label="Technologies used">
+                <li class="tag">React</li><li class="tag">TypeScript</li><li class="tag">ASP.NET Core</li><li class="tag">Node.js</li><li class="tag">Express</li><li class="tag">PostgreSQL</li><li class="tag">PayFast</li>
+              </ul>
+            </li>
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">Software Development Projects &mdash; Academic &amp; Independent</h4>
+              <span>Ongoing</span>
+              <p class="timeline-text">
+                Full-stack applications in React, JavaScript/TypeScript, Python and C# with Git version control and
+                Agile iterative delivery; relational databases with stored procedures, ad-hoc reporting queries and
+                data verification routines.
+              </p>
+            </li>
+
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">Bartender &mdash; Beershack Bar Cafe</h4>
+              <span>2022 &mdash; 2023</span>
+              <div class="image-gallery">
+                <img src="./assets/images/Me And Mr Makotsa.jpg" alt="Bartending at Beershack Bar Cafe" class="timeline-image" loading="lazy">
+                <img src="./assets/images/collegues.jpg" alt="Colleagues at Beershack Bar Cafe" class="timeline-image" loading="lazy">
+              </div>
+              <p class="timeline-text">
+                Provided customer service in a fast-paced environment while working closely with a team. Built
+                communication, problem-solving and time-management skills.
+              </p>
+            </li>
+
+          </ol>
+        </section>
+
+        <!-- Education -->
+        <section class="timeline">
+          <div class="title-wrapper">
+            <div class="icon-box"><ion-icon name="book-outline" aria-hidden="true"></ion-icon></div>
+            <h3 class="h3">Education</h3>
+          </div>
+
+          <ol class="timeline-list">
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">Postgraduate Diploma in Cybersecurity (NQF Level 8)</h4>
+              <span>Nelson Mandela University &middot; 2026 &mdash; expected completion 2026</span>
+              <p class="timeline-text">Secure systems, risk management, cybersecurity law, emerging threats, professional security practice and an applied research report.</p>
+            </li>
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">Advanced Diploma in Information Technology (NQF Level 7)</h4>
+              <span>Nelson Mandela University &middot; 2025</span>
+              <p class="timeline-text">Advanced analysis, design and implementation of IT solutions, with a focus on problem-solving and system optimisation.</p>
+            </li>
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">National Diploma in Information Technology (NQF Level 6)</h4>
+              <span>Nelson Mandela University &middot; 2022 &mdash; 2024</span>
+              <p class="timeline-text">Core programming, software development, data analysis and application development for business needs.</p>
+            </li>
+            <li class="timeline-item">
+              <h4 class="h4 timeline-item-title">National Senior Certificate (Matric)</h4>
+              <span>Khanyisa High School, Mthatha &middot; 2019 &mdash; 2021</span>
+              <p class="timeline-text">Completed high school while taking part in sports and community initiatives.</p>
+            </li>
+          </ol>
+        </section>
+
+        <!-- Skills -->
+        <section class="skill">
+          <h3 class="h3 skills-title">Skills Overview</h3>
+
+          <ul class="skills-list content-card">
+            <li class="skills-item">
+              <div class="title-wrapper"><h5 class="h5">Cybersecurity &amp; Monitoring</h5><data value="75">75%</data></div>
+              <p class="skill-subtext">Splunk, IBM QRadar &amp; Fortinet (SIEM and log analysis), OWASP principles, secure coding, vulnerability and risk assessment, threat detection, root cause analysis.</p>
+              <div class="skill-progress-bg" role="progressbar" aria-label="Cybersecurity and monitoring proficiency" aria-valuemin="0" aria-valuemax="100" aria-valuenow="75"><div class="skill-progress-fill" style="width: 75%;"></div></div>
+            </li>
+            <li class="skills-item">
+              <div class="title-wrapper"><h5 class="h5">Software Development</h5><data value="85">85%</data></div>
+              <p class="skill-subtext">C#, ASP.NET Core Web API, Python, Node.js &amp; Express.js, JavaScript (ES6+), TypeScript, SQL (SQL Server, PostgreSQL, SQLite), REST API design, authentication, performance optimisation.</p>
+              <div class="skill-progress-bg" role="progressbar" aria-label="Software development proficiency" aria-valuemin="0" aria-valuemax="100" aria-valuenow="85"><div class="skill-progress-fill" style="width: 85%;"></div></div>
+            </li>
+            <li class="skills-item">
+              <div class="title-wrapper"><h5 class="h5">Web &amp; Frontend</h5><data value="80">80%</data></div>
+              <p class="skill-subtext">React, React Router, Vite, HTML5/CSS3, responsive and accessible design, reusable UI components, single-page applications.</p>
+              <div class="skill-progress-bg" role="progressbar" aria-label="Web and frontend proficiency" aria-valuemin="0" aria-valuemax="100" aria-valuenow="80"><div class="skill-progress-fill" style="width: 80%;"></div></div>
+            </li>
+            <li class="skills-item">
+              <div class="title-wrapper"><h5 class="h5">Platforms &amp; Analytics</h5><data value="72">72%</data></div>
+              <p class="skill-subtext">E-commerce platforms, PayFast integration, web analytics, user tracking frameworks, data analysis, WCMS/DAM integration concepts.</p>
+              <div class="skill-progress-bg" role="progressbar" aria-label="Platforms and analytics proficiency" aria-valuemin="0" aria-valuemax="100" aria-valuenow="72"><div class="skill-progress-fill" style="width: 72%;"></div></div>
+            </li>
+            <li class="skills-item">
+              <div class="title-wrapper"><h5 class="h5">Quality, DevOps &amp; Support</h5><data value="75">75%</data></div>
+              <p class="skill-subtext">Git, CI/CD principles, code review, TDD/testing basics, Agile/Scrum, L2 technical support and issue reproduction, technical documentation.</p>
+              <div class="skill-progress-bg" role="progressbar" aria-label="Quality, DevOps and support proficiency" aria-valuemin="0" aria-valuemax="100" aria-valuenow="75"><div class="skill-progress-fill" style="width: 75%;"></div></div>
+            </li>
+            <li class="skills-item">
+              <div class="title-wrapper"><h5 class="h5">Professional &amp; Communication</h5><data value="80">80%</data></div>
+              <p class="skill-subtext">Communication, teamwork, adaptability, time management, cross-functional collaboration.</p>
+              <div class="skill-progress-bg" role="progressbar" aria-label="Professional and communication proficiency" aria-valuemin="0" aria-valuemax="100" aria-valuenow="80"><div class="skill-progress-fill" style="width: 80%;"></div></div>
+            </li>
+          </ul>
+
+          <div class="skills-footer">
+            <p class="skill-subtext"><small>To see more of my skills, visit my LinkedIn</small></p>
+            <a href="https://www.linkedin.com/in/aphelele-marwarwa" target="_blank" rel="noopener noreferrer" title="View LinkedIn" class="social-link linkedin-link" aria-label="LinkedIn">
+              <ion-icon name="logo-linkedin" aria-hidden="true"></ion-icon>
+            </a>
+          </div>
+        </section>
+
+        <!-- References -->
+        <section class="references">
+          <h3 class="h3">References</h3>
+          <p class="timeline-text">Contact details are available on request, or in the downloadable CV.</p>
+          <ul class="reference-list">
+            <li class="reference-item"><strong>Prof. Kerry-Lynn Thomson</strong><span>Director: School of IT, Nelson Mandela University</span></li>
+            <li class="reference-item"><strong>Mr. Bongani Mngaza</strong><span>Lecturer (Software Engineering), Nelson Mandela University</span></li>
+            <li class="reference-item"><strong>Dr. Kevin Kativu</strong><span>Senior Lecturer &amp; Deputy Director, Nelson Mandela University</span></li>
+            <li class="reference-item"><strong>Mr. Babalo Makalima</strong><span>HR Deputy Director, Minerva Group</span></li>
+          </ul>
+        </section>
+
+      </article>
 
 
-<!--
-  #Curriculum Vitae
--->
-
-<article class="Curriculum Vitae" data-page="curriculum vitae" id="Curriculum-Vitae">
-
-  <header>
-    <h2 class="h2 article-title">Curriculum Vitae</h2>
-  </header>
-
-  <section class="timeline">
-
-    <div class="title-wrapper">
-      <div class="icon-box">
-        <ion-icon name="book-outline"></ion-icon>
-      </div>
-
-      <h3 class="h3">Education</h3>
-    </div>
-
-    <ol class="timeline-list">
-
-  <li class="timeline-item">
-    <h4 class="h4 timeline-item-title">Khanyisa High School</h4>
-    <span>2019 — 2021</span>
-    <p class="timeline-text">
-      Completed high school while building a strong academic foundation and participating in sports and community
-      initiatives, supporting both personal and academic development.
-    </p>
-  </li>
-
-  <li class="timeline-item">
-    <h4 class="h4 timeline-item-title">Nelson Mandela University</h4>
-    <span>2022 — 2024 · Diploma in Information Technology (Software Development)</span>
-    <p class="timeline-text">
-      Developed core IT and software development skills focused on designing and implementing software solutions
-      for business needs, including programming, data analysis, and application development.
-    </p>
-  </li>
-
-  <li class="timeline-item">
-    <h4 class="h4 timeline-item-title">Nelson Mandela University</h4>
-    <span>2025 · Advanced Diploma in Information Technology</span>
-    <p class="timeline-text">
-      Built advanced knowledge in Information Technology, focusing on analysing, designing, and implementing
-      effective IT solutions while strengthening problem-solving and system optimisation skills.
-    </p>
-  </li>
-
-  <li class="timeline-item">
-    <h4 class="h4 timeline-item-title">Nelson Mandela University</h4>
-    <span>2026 · Postgraduate Diploma (PGDip) in Cybersecurity</span>
-    <p class="timeline-text">
-      Currently pursuing specialised knowledge in cybersecurity, including secure systems, risk management,
-      cybersecurity laws, emerging threats, and professional security practices.
-    </p>
-  </li>
-
-</ol>
-
-  </section>
-
-  <section class="timeline">
-
-  <div class="title-wrapper">
-    <div class="icon-box">
-      <ion-icon name="book-outline"></ion-icon>
-    </div>
-
-    <h3 class="h3">Experience</h3>
-  </div>
-
-  <ol class="timeline-list">
-
-    <li class="timeline-item">
-
-      <h4 class="h4 timeline-item-title">Bartender — Beershack Bar Cafe</h4>
-      <span>2022 — 2023</span>
-
-      <div class="image-gallery">
-        <img src="./assets/images/Me And Mr Makotsa.jpg" alt="Bartending at Beershack Bar Cafe" class="timeline-image">
-        <img src="./assets/images/collegues.jpg" alt="Bartending at Beershack Bar Cafe" class="timeline-image">
-      </div>
-
-      <p class="timeline-text">
-        Provided high-quality customer service in a fast-paced environment while working closely with a team to
-        ensure smooth daily operations. Gained strong communication, problem-solving, and time-management skills,
-        along with practical knowledge of beverage preparation and bar operations.
-      </p>
-
-    </li>
-
-  </ol>
-
-</section>
-
-
-<section class="skill">
-
-  <h3 class="h3 skills-title">Skills Overview</h3>
-
-  <ul class="skills-list content-card">
-
-    <li class="skills-item">
-      <div class="title-wrapper">
-        <h5 class="h5">Software, Web & Application Development</h5>
-        <data value="80">80%</data>
-      </div>
-      <p class="skill-subtext">
-        C#, .NET, Object-Oriented Programming, HTML, CSS, JavaScript, Web & Mobile Application Development, Design Patterns.
-      </p>
-      <div class="skill-progress-bg">
-        <div class="skill-progress-fill" style="width: 80%;"></div>
-      </div>
-    </li>
-
-    <li class="skills-item">
-      <div class="title-wrapper">
-        <h5 class="h5">Networking, Systems & IT Support</h5>
-        <data value="72">72%</data>
-      </div>
-      <p class="skill-subtext">
-        Network Fundamentals, TCP/IP, LAN/WAN, Windows Systems, Hardware & Software Troubleshooting
-      </p>
-      <div class="skill-progress-bg">
-        <div class="skill-progress-fill" style="width: 72%;"></div>
-      </div>
-    </li>
-
-    <li class="skills-item">
-      <div class="title-wrapper">
-        <h5 class="h5">Testing, Debugging & Problem Solving</h5>
-        <data value="75">75%</data>
-      </div>
-      <p class="skill-subtext">
-        Software Testing, Debugging, Troubleshooting, Root Cause Analysis, Algorithmic Thinking
-      </p>
-      <div class="skill-progress-bg">
-        <div class="skill-progress-fill" style="width: 75%;"></div>
-      </div>
-    </li>
-
-    <li class="skills-item">
-      <div class="title-wrapper">
-        <h5 class="h5">Data & Cybersecurity Fundamentals</h5>
-        <data value="68">68%</data>
-      </div>
-      <p class="skill-subtext">
-        Data Analysis, Information Security Basics, Risk Awareness, Secure System Concepts
-      </p>
-      <div class="skill-progress-bg">
-        <div class="skill-progress-fill" style="width: 68%;"></div>
-      </div>
-    </li>
-
-    <li class="skills-item">
-      <div class="title-wrapper">
-        <h5 class="h5">Professional & Communication Skills</h5>
-        <data value="80">80%</data>
-      </div>
-      <p class="skill-subtext">
-        Communication, Teamwork, Adaptability, Time Management
-      </p>
-      <div class="skill-progress-bg">
-        <div class="skill-progress-fill" style="width: 80%;"></div>
-      </div>
-    </li>
-
-  </ul>
-<div style="text-align: center; margin-top: 20px;">
-  <p class="skill-subtext">
-    <small>To see more of my skills, visit my 
-    </small>
-  </p>
-  <a href="https://www.linkedin.com/in/aphelele-marwarwa" target="_blank" title="View LinkedIn" class="social-link linkedin-link" style="display:inline-block; font-size: 2rem; margin-top: 5px;">
-    <ion-icon name="logo-linkedin">LinkedIn</ion-icon>
-  </a>
-</div>
-
-
-</section>
-
-
-
-
-
-</article>
-
-
-
-
-
-      <!--
-        - #PORTFOLIO
-      -->
-
-      
+      <!-- #PORTFOLIO -->
       <article class="portfolio" data-page="portfolio" id="portfolio">
+
         <header>
           <h2 class="h2 article-title">Projects</h2>
         </header>
+
         <section class="projects">
-          <ul class="filter-list">
-            <li class="filter-item">
-              <button class="active" data-filter-btn>All</button>
-            </li>
-            <li class="filter-item">
-              <button data-filter-btn>Desktop Applications</button>
-            </li>
-            <li class="filter-item">
-              <button data-filter-btn>Web development</button>
-            </li>
-            <li class="filter-item">
-              <button data-filter-btn>Data analysis</button>
-            </li>
+
+          <!-- Search -->
+          <div class="project-search">
+            <label for="projectSearch" class="visually-hidden">Search projects</label>
+            <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
+            <input type="search" id="projectSearch" class="form-input" placeholder="Search projects or technologies (e.g. React, C#, SQL)" data-project-search autocomplete="off">
+          </div>
+
+          <ul class="filter-list" role="group" aria-label="Filter projects by category">
+            <li class="filter-item"><button class="active" data-filter-btn>All</button></li>
+            <li class="filter-item"><button data-filter-btn>Web development</button></li>
+            <li class="filter-item"><button data-filter-btn>Desktop Applications</button></li>
+            <li class="filter-item"><button data-filter-btn>Cybersecurity</button></li>
+            <li class="filter-item"><button data-filter-btn>Data analysis</button></li>
           </ul>
+
           <div class="filter-select-box">
-            <button class="filter-select" data-select>
+            <button class="filter-select" data-select aria-haspopup="listbox" aria-expanded="false">
               <div class="select-value" data-select-value>Select category</div>
-              <div class="select-icon">
-                <ion-icon name="chevron-down"></ion-icon>
-              </div>
+              <div class="select-icon"><ion-icon name="chevron-down" aria-hidden="true"></ion-icon></div>
             </button>
-            <ul class="select-list">
-              <li class="select-item">
-                <button data-select-item>All</button>
-              </li>
-              <li class="select-item">
-                <button data-select-item>Desktop Applications</button>
-              </li>
-              <li class="select-item">
-                <button data-select-item>Web development</button>
-              </li>
-              <li class="select-item">
-                <button data-select-item>Data analysis</button>
-              </li>
+            <ul class="select-list" role="listbox">
+              <li class="select-item"><button data-select-item>All</button></li>
+              <li class="select-item"><button data-select-item>Web development</button></li>
+              <li class="select-item"><button data-select-item>Desktop Applications</button></li>
+              <li class="select-item"><button data-select-item>Cybersecurity</button></li>
+              <li class="select-item"><button data-select-item>Data analysis</button></li>
             </ul>
           </div>
+
+          <p class="no-results" data-no-results hidden>No projects match your search.</p>
+
           <ul class="project-list">
-            <li class="project-item active" data-filter-item data-category="desktop applications">
+
+            <!-- M.Com Electronics -->
+            <li class="project-item active" data-filter-item data-category="web development" data-tags="react typescript aspnet core node express postgresql payfast e-commerce">
+              <a href="https://www.m-com-electronics.site/" target="_blank" rel="noopener noreferrer">
+                <figure class="project-img">
+                  <div class="project-item-icon-box"><ion-icon name="eye-outline" aria-hidden="true"></ion-icon></div>
+                  <img src="./assets/images/M-Com-Electronics.png" alt="M.Com Electronics e-commerce website" loading="lazy">
+                </figure>
+                <h3 class="project-title">M.Com Electronics <span class="badge badge-live">Live</span></h3>
+                <p class="project-category">Web development &middot; Client project</p>
+                <p class="project-desc">Full e-commerce platform: product catalogue, cart/checkout, user accounts, admin sales dashboard, PayFast payments, audit logging and stock movement tracking.</p>
+                <ul class="tag-list"><li class="tag">React</li><li class="tag">ASP.NET Core</li><li class="tag">PostgreSQL</li><li class="tag">PayFast</li></ul>
+              </a>
+            </li>
+
+            <!-- DevZone -->
+            <li class="project-item active" data-filter-item data-category="web development" data-tags="c# asp.net core mvc sql server reports csv pdf dashboard">
               <a href="#">
                 <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <img src="./assets/images/AtM.png" alt="ATM" loading="lazy">
+                  <div class="project-item-icon-box"><ion-icon name="eye-outline" aria-hidden="true"></ion-icon></div>
+                  <img src="./assets/images/DevZone.png" alt="DevZone applied project" loading="lazy">
+                </figure>
+                <h3 class="project-title">DevZone (Applied Project)</h3>
+                <p class="project-category">Web development &middot; Academic</p>
+                <p class="project-desc">ASP.NET Core MVC lab management system with role-based access, a lab technician reports page (KPIs, CSV export) and a SQL Server seed/preload script.</p>
+                <ul class="tag-list"><li class="tag">C#</li><li class="tag">ASP.NET Core MVC</li><li class="tag">SQL Server</li></ul>
+              </a>
+            </li>
+
+            <!-- Enterprise IT & Cybersecurity Platform Overview -->
+            <li class="project-item active" data-filter-item data-category="cybersecurity" data-tags="splunk qradar fortinet siem edr pam backup mttd mttr architecture">
+              <a href="#research-platforms" data-goto="security">
+                <figure class="project-img">
+                  <div class="project-item-icon-box"><ion-icon name="eye-outline" aria-hidden="true"></ion-icon></div>
+                  <img src="./assets/images/Cyber-Security-Icon.jpeg" alt="Enterprise IT and cybersecurity platform overview" loading="lazy">
+                </figure>
+                <h3 class="project-title">Enterprise IT &amp; Cybersecurity Platform Overview</h3>
+                <p class="project-category">Cybersecurity &middot; Documentation</p>
+                <p class="project-desc">Reference guide covering 12 enterprise platforms across prevent, detect &amp; respond, control access and recover, with an evaluation framework and key metrics.</p>
+                <ul class="tag-list"><li class="tag">SIEM</li><li class="tag">XDR / EDR</li><li class="tag">PAM</li><li class="tag">MTTD / MTTR</li></ul>
+              </a>
+            </li>
+
+            <!-- Research -->
+            <li class="project-item active" data-filter-item data-category="cybersecurity" data-tags="hyperledger fabric blockchain distributed ledger machine learning anomaly detection banking insider threat research">
+              <a href="#research" data-goto="research">
+                <figure class="project-img">
+                  <div class="project-item-icon-box"><ion-icon name="eye-outline" aria-hidden="true"></ion-icon></div>
+                  <img src="./assets/images/Research.png" alt="Research on distributed ledger technology for banking data" loading="lazy">
+                </figure>
+                <h3 class="project-title">DLT &amp; Anomaly Detection for Banking Data</h3>
+                <p class="project-category">Cybersecurity &middot; Research</p>
+                <p class="project-desc">Literature-based research on Hyperledger Fabric and machine-learning anomaly detection to make insider tampering with banking records detectable.</p>
+                <ul class="tag-list"><li class="tag">Hyperledger Fabric</li><li class="tag">Machine learning</li><li class="tag">Insider threat</li></ul>
+              </a>
+            </li>
+
+            <!-- Padlock myth -->
+            <li class="project-item active" data-filter-item data-category="cybersecurity" data-tags="https padlock myth phishing cyber safety infographic social engineering">
+              <a href="#security-padlock" data-goto="security">
+                <figure class="project-img">
+                  <div class="project-item-icon-box"><ion-icon name="eye-outline" aria-hidden="true"></ion-icon></div>
+                  <img src="./assets/images/Padlock-Myth.png" alt="Infographic: the padlock myth" loading="lazy">
+                </figure>
+                <h3 class="project-title">The Padlock Myth (Cyber Safety Case Study)</h3>
+                <p class="project-category">Cybersecurity &middot; Social engineering</p>
+                <p class="project-desc">Case study and infographic on why &ldquo;HTTPS means safe&rdquo; is dangerously wrong, written from the viewpoint of a developer who tends to trust HTTPS.</p>
+                <ul class="tag-list"><li class="tag">HTTPS</li><li class="tag">Phishing</li><li class="tag">Security awareness</li></ul>
+              </a>
+            </li>
+
+            <!-- ATM -->
+            <li class="project-item active" data-filter-item data-category="desktop applications" data-tags="c# winforms wpf atm desktop">
+              <a href="#">
+                <figure class="project-img">
+                  <div class="project-item-icon-box"><ion-icon name="eye-outline" aria-hidden="true"></ion-icon></div>
+                  <img src="./assets/images/AtM.png" alt="ATM desktop application" loading="lazy">
                 </figure>
                 <h3 class="project-title">ATM</h3>
-                <p class="project-category">Desktop Applications</p> 
+                <p class="project-category">Desktop Applications</p>
+                <ul class="tag-list"><li class="tag">C#</li><li class="tag">Desktop</li></ul>
               </a>
             </li>
-            <li class="project-item active" data-filter-item data-category="desktop applications">
+
+            <!-- CRUD -->
+            <li class="project-item active" data-filter-item data-category="desktop applications" data-tags="c# crud database ado.net desktop">
               <a href="#">
                 <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <img src="./assets/images/CRUD.png" alt="CRUD" loading="lazy">
+                  <div class="project-item-icon-box"><ion-icon name="eye-outline" aria-hidden="true"></ion-icon></div>
+                  <img src="./assets/images/CRUD.png" alt="CRUD desktop application" loading="lazy">
                 </figure>
                 <h3 class="project-title">CRUD</h3>
-                <p class="project-category">Desktop Applications</p> 
+                <p class="project-category">Desktop Applications</p>
+                <ul class="tag-list"><li class="tag">C#</li><li class="tag">SQL</li></ul>
               </a>
             </li>
-            <li class="project-item active" data-filter-item data-category="web development">
+
+            <!-- Music app -->
+            <li class="project-item active" data-filter-item data-category="web development" data-tags="music web application">
               <a href="#">
                 <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <img src="./assets/images/musiApp.png" alt="Music Application" loading="lazy">
+                  <div class="project-item-icon-box"><ion-icon name="eye-outline" aria-hidden="true"></ion-icon></div>
+                  <img src="./assets/images/musiApp.png" alt="Music application" loading="lazy">
                 </figure>
                 <h3 class="project-title">Music Application</h3>
                 <p class="project-category">Web development</p>
               </a>
             </li>
-            <li class="project-item active" data-filter-item data-category="web development">
+
+            <!-- Fridge -->
+            <li class="project-item active" data-filter-item data-category="web development" data-tags="fridge management web application">
               <a href="#">
                 <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <img src="./assets/images/FridgeManagement .png" alt="Music Application" loading="lazy">
+                  <div class="project-item-icon-box"><ion-icon name="eye-outline" aria-hidden="true"></ion-icon></div>
+                  <img src="./assets/images/FridgeManagement .png" alt="Fridge management application" loading="lazy">
                 </figure>
                 <h3 class="project-title">Fridge Management Application</h3>
                 <p class="project-category">Web development</p>
               </a>
             </li>
 
-             <li class="project-item active" data-filter-item data-category="web development">
+            <!-- Pharmacy -->
+            <li class="project-item active" data-filter-item data-category="web development" data-tags="healthcare pharmacy web application">
               <a href="#">
                 <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <img src="./assets/images/HealthCareProject.png" alt="Music Application" loading="lazy">
+                  <div class="project-item-icon-box"><ion-icon name="eye-outline" aria-hidden="true"></ion-icon></div>
+                  <img src="./assets/images/HealthCareProject.png" alt="HealthCare pharmacy application" loading="lazy">
                 </figure>
                 <h3 class="project-title">HealthCare Pharmacy Application</h3>
                 <p class="project-category">Web development</p>
               </a>
             </li>
+
           </ul>
+
+          <p class="github-cta">
+            More on GitHub:
+            <a href="https://github.com/Aphelele-Marwarwa" target="_blank" rel="noopener noreferrer" class="text-link">github.com/Aphelele-Marwarwa</a>
+          </p>
         </section>
       </article>
-      
 
-      <!--
-        - #Hobbies
-      -->
 
+      <!-- #CYBERSECURITY & SOCIAL ENGINEERING -->
+      <article class="security" data-page="security" id="security">
+
+        <header>
+          <h2 class="h2 article-title">Cybersecurity &amp; Social Engineering</h2>
+        </header>
+
+        <section class="about-text">
+          <p>
+            Security is not only about tools; most incidents start with a person. My work combines technical
+            defence (SIEM monitoring, secure coding, vulnerability assessment) with the human side of security:
+            social engineering, insider threats and the myths that make users and developers over-trust.
+          </p>
+        </section>
+
+        <!-- Defensive -->
+        <section class="security-block">
+          <h3 class="h3">Defensive Security</h3>
+          <ul class="card-grid">
+            <li class="info-card">
+              <h4 class="h4">SIEM &amp; Log Analysis</h4>
+              <p>Evaluated Splunk (SIEM/SPL/SOAR), IBM QRadar and Fortinet during my internship, analysing application telemetry, tracking logs and web traffic.</p>
+            </li>
+            <li class="info-card">
+              <h4 class="h4">OWASP &amp; Secure Coding</h4>
+              <p>Applied OWASP principles to identify vulnerabilities, assess risk and propose sustainable remediation, and carry them into my own code (authentication, validation, audit logging).</p>
+            </li>
+            <li class="info-card">
+              <h4 class="h4">Risk &amp; Governance</h4>
+              <p>Risk assessment, root cause analysis and information security management planning, studied through the Postgraduate Diploma in Cybersecurity.</p>
+            </li>
+            <li class="info-card">
+              <h4 class="h4">Metrics that matter</h4>
+              <p>Mean time to detect (MTTD), mean time to respond (MTTR), privileged access coverage and backup recovery success rate.</p>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Offensive -->
+        <section class="security-block">
+          <h3 class="h3">Penetration Testing &amp; Offensive Security</h3>
+          <p class="timeline-text">
+            Hands-on practice on Kali Linux and Ubuntu in authorised lab environments: reconnaissance, vulnerability
+            scanning, exploitation, wireless security testing and traffic/data analysis.
+          </p>
+          <ul class="tag-list tag-list-lg" aria-label="Security tools">
+            <li class="tag">Nmap</li><li class="tag">Metasploit</li><li class="tag">Burp Suite</li><li class="tag">Greenbone / OpenVAS</li>
+            <li class="tag">OWASP ZAP</li><li class="tag">Wireshark</li><li class="tag">tcpdump</li><li class="tag">Aircrack-ng</li>
+            <li class="tag">Crunch</li><li class="tag">Steghide</li><li class="tag">Recon-ng</li><li class="tag">SpiderFoot</li>
+          </ul>
+        </section>
+
+        <!-- Social engineering -->
+        <section class="security-block" id="security-social">
+          <h3 class="h3">Social Engineering &amp; the Human Factor</h3>
+          <p class="timeline-text">
+            Social engineering attacks the person rather than the system. These are the areas I study and
+            write about, and the lens I bring to every security review.
+          </p>
+          <ul class="card-grid">
+            <li class="info-card">
+              <h4 class="h4">Phishing &amp; spoofed sites</h4>
+              <p>Why users and even developers trust a site that merely looks legitimate, and how attackers abuse visual trust signals.</p>
+            </li>
+            <li class="info-card">
+              <h4 class="h4">Pretexting &amp; impersonation</h4>
+              <p>How attackers build believable stories to obtain access, credentials or information, and the process controls that stop them.</p>
+            </li>
+            <li class="info-card">
+              <h4 class="h4">Insider threats</h4>
+              <p>The hardest vulnerability to deter: people with legitimate privileges. This is the motivation behind my research (see Research).</p>
+            </li>
+            <li class="info-card">
+              <h4 class="h4">Awareness &amp; reconnaissance</h4>
+              <p>OSINT tools such as Recon-ng and SpiderFoot show how much about a person or organisation is publicly exposed, and why awareness training matters.</p>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Padlock case study -->
+        <section class="security-block" id="security-padlock">
+          <h3 class="h3">Case Study: The Padlock Myth</h3>
+          <div class="case-study">
+            <figure class="case-study-figure">
+              <img src="./assets/images/Padlock-Myth.png" alt="Infographic: Why HTTPS equals safe is dangerously wrong" loading="lazy" class="zoomable">
+              <figcaption>Infographic from ICHF402 Cyber Safety, Case Study 2.</figcaption>
+            </figure>
+            <div class="case-study-text">
+              <p>
+                <em>&ldquo;The Padlock Myth: Why HTTPS = Safe Is Dangerously Wrong.&rdquo;</em> The padlock only tells you the connection
+                is encrypted, not that the site is trustworthy. Phishing sites can and do use valid certificates.
+              </p>
+              <p>
+                As a software developer who builds web applications, I tend to trust HTTPS, which is exactly why this
+                myth matters to me: a technical safeguard can become a false sense of security.
+              </p>
+              <p class="project-links">
+                <a href="./assets/docs/Padlock-Myth-Summary.pdf" class="text-link" target="_blank" rel="noopener noreferrer">
+                  <ion-icon name="document-text-outline" aria-hidden="true"></ion-icon> Read the PDF summary
+                </a>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Platforms overview -->
+        <section class="security-block" id="research-platforms">
+          <h3 class="h3">Enterprise IT &amp; Cybersecurity Platform Overview</h3>
+          <p class="timeline-text">
+            A structured reference guide covering 12 enterprise platforms and how they work together across the
+            <strong>prevent</strong>, <strong>detect &amp; respond</strong>, <strong>control access</strong> and <strong>recover</strong> lifecycle.
+          </p>
+
+          <div class="table-wrap" tabindex="0" role="region" aria-label="Platform overview table">
+            <table class="data-table">
+              <caption class="visually-hidden">Enterprise platforms by category</caption>
+              <thead>
+                <tr><th scope="col">Category</th><th scope="col">Platforms</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Data &amp; security analytics</th><td>Splunk (SIEM / SPL / SOAR)</td></tr>
+                <tr><th scope="row">Threat protection</th><td>Fortinet (NGFW / SD-WAN / ZTNA), Trellix (XDR), Mimecast (email security), SentinelOne (AI EDR)</td></tr>
+                <tr><th scope="row">Identity &amp; data protection</th><td>Delinea (PAM), Wallix (PAM &amp; session management), Veeam (backup &amp; DR), Commvault (enterprise backup)</td></tr>
+                <tr><th scope="row">IT operations &amp; observability</th><td>SolarWinds (infrastructure monitoring), Elastic (ELK / SIEM), Brocade/Broadcom (SAN &amp; Ethernet fabric)</td></tr>
+                <tr><th scope="row">Training &amp; certification resources</th><td>Nokia Service Routing Certification (SRC), IBM Certified Analyst/Deployment Professional: QRadar SIEM</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4 class="h4 sub-heading">Architecture evaluation framework</h4>
+          <ul class="tag-list tag-list-lg" aria-label="Evaluation criteria">
+            <li class="tag">Coverage</li><li class="tag">Integration</li><li class="tag">Automation</li><li class="tag">Visibility</li><li class="tag">Resilience</li>
+          </ul>
+        </section>
+
+      </article>
+
+
+      <!-- #RESEARCH -->
+      <article class="research" data-page="research" id="research">
+
+        <header>
+          <h2 class="h2 article-title">Research</h2>
+        </header>
+
+        <section class="research-block">
+          <p class="research-label">Postgraduate Diploma in Cybersecurity &middot; Nelson Mandela University</p>
+          <h3 class="h3 research-title">
+            Adoption of distributed ledger technology (DLT) for immutable, tamper-evident storage of banking data,
+            combined with machine-learning anomaly detection
+          </h3>
+
+          <ul class="meta-list" aria-label="Research details">
+            <li><strong>Type:</strong> Literature-based technical research (systematic literature review)</li>
+            <li><strong>Corpus:</strong> 20 peer-reviewed papers</li>
+            <li><strong>Sources searched:</strong> IEEE Xplore and ScienceDirect</li>
+            <li><strong>Status:</strong> Report in progress (2026)</li>
+          </ul>
+
+          <h4 class="h4 sub-heading">Why this topic</h4>
+          <p class="timeline-text">
+            During my cybersecurity internship I worked on the defensive side of security and concluded that the
+            human vulnerability, the insider threat, is the hardest to deter. My database programming background
+            showed me why: in Microsoft SQL Server, a privileged user can edit a table directly, and in most
+            cases there may be no trace that the data was changed by hand. For banking data, that is a serious
+            integrity risk.
+          </p>
+
+          <h4 class="h4 sub-heading">Research question</h4>
+          <p class="timeline-text">
+            How can a permissioned distributed ledger such as Hyperledger Fabric, together with machine-learning
+            based anomaly detection, make unauthorised changes to banking records harder to hide and easier to detect?
+          </p>
+
+          <h4 class="h4 sub-heading">Key concepts</h4>
+          <ul class="card-grid">
+            <li class="info-card">
+              <h4 class="h4">Permissioned ledger</h4>
+              <p>Hyperledger Fabric as a ledger where known participants record transactions in an append-only, tamper-evident way.</p>
+            </li>
+            <li class="info-card">
+              <h4 class="h4">Anomaly detection</h4>
+              <p>Machine-learning methods that flag unusual activity, such as insider misuse, in activity logs and records.</p>
+            </li>
+            <li class="info-card">
+              <h4 class="h4">Insider threat</h4>
+              <p>Risk from privileged users who can alter data directly, the central problem the review is organised around.</p>
+            </li>
+            <li class="info-card">
+              <h4 class="h4">Defence in depth</h4>
+              <p>Layered controls and separation of duties, with the ledger and detection acting as complementary layers.</p>
+            </li>
+          </ul>
+
+          <h4 class="h4 sub-heading">Method</h4>
+          <ol class="steps-list">
+            <li>Define the insider-threat inclusion criteria and search terms.</li>
+            <li>Search IEEE Xplore and ScienceDirect, then screen titles, abstracts and full texts.</li>
+            <li>Assess the quality of each included paper and group findings by concept.</li>
+            <li>Synthesise the evidence into a layered framework and discuss limitations and South African banking context.</li>
+          </ol>
+
+          <p class="note">
+            This is a literature-based study: it reviews existing evidence and proposes a conceptual framework, and it does not
+            report a built or deployed system.
+          </p>
+
+          <p class="project-links">
+            <a href="./assets/docs/Research-Report.pdf" class="text-link" target="_blank" rel="noopener noreferrer">
+              <ion-icon name="document-text-outline" aria-hidden="true"></ion-icon> Read the research report (PDF)
+            </a>
+          </p>
+        </section>
+
+      </article>
+
+
+      <!-- #HOBBIES -->
       <article class="hobbies" data-page="hobbies" id="hobbies">
 
         <header>
           <h2 class="h2 article-title">Hobbies</h2>
         </header>
-      
+
         <section class="hobbies-posts">
-      
+
           <ul class="hobbies-posts-list">
+
             <li class="hobbies-post-item">
               <a href="#">
-                  <figure class="hobbies-banner-box">
-                      <img src="./assets/images/Leonardo_da_Vinci.jpg" alt="Leonardo da Vinci" loading="lazy">
-                  </figure>
-                  <div class="hobbies-content">
-                      <div class="hobbies-meta">
-                          <p class="hobbies-category">Art</p>
-                          <span class="dot"></span>
-                          <time datetime="2022-06-15">June 15 2022</time>
-                      </div>
-                      <h3 class="h3 hobbies-item-title">Leonardo da Vinci</h3>
-                      <p class="hobbies-text">
-                          Explore the life and works of the legendary artist and inventor, Leonardo da Vinci. Known for his diverse talents and groundbreaking contributions to art, science, and engineering, da Vinci's legacy continues to inspire creativity and innovation.
-                      </p>
-                      <br>
-                      <p class="hobbies-text">
-                        <strong class="quote">"Jack of all trades, master of none, though oftentimes better than master of one." - Leonardo da Vinci</strong>
-                      </p>
-                      <br>
-                      <p class="hobbies-text">
-                          As a programmer, I embody the spirit of being a jack of all trades. I thrive on adaptability and versatility, constantly learning new languages and technologies and utilizing them as needed. This approach enables me to tackle a wide range of challenges and contribute effectively to diverse projects.
-                      </p>
-                  </div>
-              </a>
-          </li>
-          
-            <li class="hobbies-post-item">
-              <a href="#">
-      
                 <figure class="hobbies-banner-box">
-                  <img src="./assets/images/painting1.jpg" alt="Abstract Art Piece" loading="lazy">
+                  <img src="./assets/images/Leonardo_da_Vinci.jpg" alt="Leonardo da Vinci" loading="lazy">
                 </figure>
-      
                 <div class="hobbies-content">
-      
                   <div class="hobbies-meta">
                     <p class="hobbies-category">Art</p>
-      
                     <span class="dot"></span>
-      
-                    <time datetime="2023-09-23">September 16, 2023</time>
+                    <time datetime="2022-06-15">June 15, 2022</time>
                   </div>
-      
-                  <h3 class="h3 hobbies-item-title">Abstract Art Piece</h3>
-      
+                  <h3 class="h3 hobbies-item-title">Leonardo da Vinci</h3>
                   <p class="hobbies-text">
-                    Abstract art is a form of art that does not attempt to represent an accurate depiction of visual reality but instead uses shapes, 
-                    colors, forms, and gestural marks to achieve its effect. 
-                    It is often seen as a reflection of the artist's emotions, thoughts, and imagination.
+                    Explore the life and works of the legendary artist and inventor, Leonardo da Vinci. Known for his diverse talents and groundbreaking contributions to art, science and engineering, da Vinci&rsquo;s legacy continues to inspire creativity and innovation.
                   </p>
-                  <br>
                   <p class="hobbies-text">
-                    <strong class="quote">This painting was made by me.</strong>
+                    <strong class="quote">&ldquo;Jack of all trades, master of none, though oftentimes better than master of one.&rdquo; &mdash; Leonardo da Vinci</strong>
                   </p>
-                  
+                  <p class="hobbies-text">
+                    As a programmer, I embody the spirit of being a jack of all trades. I thrive on adaptability and versatility, constantly learning new languages and technologies and using them as needed.
+                  </p>
                 </div>
-      
               </a>
             </li>
-      
+
             <li class="hobbies-post-item">
               <a href="#">
-      
                 <figure class="hobbies-banner-box">
-                  <img src="./assets/images/Painting2.jpg" alt="Landscape Painting" loading="lazy">
+                  <img src="./assets/images/painting1.jpg" alt="Abstract art piece painted by Aphelele" loading="lazy" class="zoomable">
                 </figure>
-      
                 <div class="hobbies-content">
-      
                   <div class="hobbies-meta">
                     <p class="hobbies-category">Art</p>
-      
                     <span class="dot"></span>
-      
+                    <time datetime="2023-09-16">September 16, 2023</time>
+                  </div>
+                  <h3 class="h3 hobbies-item-title">Abstract Art Piece</h3>
+                  <p class="hobbies-text">
+                    Abstract art does not try to represent an accurate depiction of visual reality; it uses shapes, colours, forms and gestural marks to achieve its effect, often reflecting the artist&rsquo;s emotions and imagination.
+                  </p>
+                  <p class="hobbies-text"><strong class="quote">This painting was made by me.</strong></p>
+                </div>
+              </a>
+            </li>
+
+            <li class="hobbies-post-item">
+              <a href="#">
+                <figure class="hobbies-banner-box">
+                  <img src="./assets/images/Painting2.jpg" alt="Landscape painting by Aphelele" loading="lazy" class="zoomable">
+                </figure>
+                <div class="hobbies-content">
+                  <div class="hobbies-meta">
+                    <p class="hobbies-category">Art</p>
+                    <span class="dot"></span>
                     <time datetime="2024-04-28">April 28, 2024</time>
                   </div>
-      
                   <h3 class="h3 hobbies-item-title">Landscape Painting</h3>
-      
                   <p class="hobbies-text">
-                    Landscape painting is the art of depicting natural scenery such as mountains, valleys, trees, rivers, and forests. 
-                    It is a popular genre among artists because it allows them to capture the beauty of nature and express their creativity 
-                    through colors and compositions.
+                    Landscape painting depicts natural scenery such as mountains, valleys, trees, rivers and forests, and lets an artist capture the beauty of nature through colour and composition.
                   </p>
-                  <br>
-                  <p class="hobbies-text">
-                    <strong class="quote">This painting was made by me.</strong>
-                  </p>
-                  
+                  <p class="hobbies-text"><strong class="quote">This painting was made by me.</strong></p>
                 </div>
-      
               </a>
             </li>
-      
+
             <li class="hobbies-post-item">
               <a href="#">
-      
                 <figure class="hobbies-banner-box">
                   <img src="./assets/images/Can't_Hurt_Me_David_Goggins.jpg" alt="Can't Hurt Me by David Goggins" loading="lazy">
                 </figure>
-      
                 <div class="hobbies-content">
-      
                   <div class="hobbies-meta">
-                    <p class="hobbies-category">Personal Growth</p>   
+                    <p class="hobbies-category">Personal Growth</p>
                     <span class="dot"></span>
                     <time datetime="2020-08-23">August 23, 2020</time>
                   </div>
-      
-                  <h3 class="h3 hobbies-item-title">Can't Hurt Me by David Goggins</h3>
-      
+                  <h3 class="h3 hobbies-item-title">Can&rsquo;t Hurt Me by David Goggins</h3>
                   <p class="hobbies-text">
-                    "Can't Hurt Me" by David Goggins is the first book I ever finished. I read it in 2020 during my grade 11 year.
-                     It left a profound impact on me and inspired me to push beyond my limits, both physically and mentally.
-                     
-                  </p><br>
+                    The first book I ever finished, read in 2020 during my grade 11 year. It inspired me to push beyond my limits, both physically and mentally.
+                  </p>
                   <p class="hobbies-text">
-                    Two Best Quotes I got from the book:
-                    <br>
-                    <span class="quote">"Master your mind and defy the odds"</span>
-                    <br>
-                    <span class="quote">"To the unrelenting voice in my head that will never allow me to stop"</span>
+                    Two best quotes from the book:<br>
+                    <span class="quote">&ldquo;Master your mind and defy the odds&rdquo;</span><br>
+                    <span class="quote">&ldquo;To the unrelenting voice in my head that will never allow me to stop&rdquo;</span>
                   </p>
                 </div>
-      
               </a>
             </li>
-      
+
             <li class="hobbies-post-item">
               <a href="#">
-      
                 <figure class="hobbies-banner-box">
-                  <img src="./assets/images/food_and_cooking.jpg" alt="Cooking at a young age" loading="lazy">
+                  <img src="./assets/images/food_and_cooking.jpg" alt="Cooking" loading="lazy">
                 </figure>
-      
                 <div class="hobbies-content">
-      
                   <div class="hobbies-meta">
                     <p class="hobbies-category">Cooking</p>
-      
                     <span class="dot"></span>
-      
-                    <time datetime="2014-01-01">at a very young age</time>
+                    <time datetime="2014-01-01">At a very young age</time>
                   </div>
-      
                   <h3 class="h3 hobbies-item-title">Cooking</h3>
-      
                   <p class="hobbies-text">
-                    I started cooking at a very young age. It has been a passion of mine, allowing me to explore various cuisines and develop my culinary skills.
+                    I started cooking at a very young age. It has been a passion of mine, letting me explore different cuisines and develop my culinary skills.
                   </p>
-      
                 </div>
-      
               </a>
             </li>
-      
+
             <li class="hobbies-post-item">
               <a href="#">
-      
                 <figure class="hobbies-banner-box">
                   <img src="./assets/images/Maditation_by_marcusaurelius.jpg" alt="Meditations by Marcus Aurelius" loading="lazy">
                 </figure>
-      
                 <div class="hobbies-content">
-      
                   <div class="hobbies-meta">
                     <p class="hobbies-category">Philosophy</p>
-      
                     <span class="dot"></span>
-      
-                    <time datetime="2022-02-23">Feb 23, 2022</time>
+                    <time datetime="2022-04-23">April 2022</time>
                   </div>
-      
                   <h3 class="h3 hobbies-item-title">Meditations by Marcus Aurelius</h3>
-      
                   <p class="hobbies-text">
-                    "Meditations" by Marcus Aurelius is a profound philosophical work that I read in April 2022. 
-                    It has greatly influenced my outlook on life and self-discipline, particularly through its stoic teachings on virtue, wisdom, and resilience.
+                    A philosophical work I read in April 2022. Its stoic teachings on virtue, wisdom and resilience shaped my outlook on life and self-discipline.
                   </p>
-      
                 </div>
-      
               </a>
             </li>
-      
+
             <li class="hobbies-post-item">
               <a href="#">
-      
                 <figure class="hobbies-banner-box">
                   <img src="./assets/images/12_Rules_for_life.jpg" alt="12 Rules for Life by Jordan B. Peterson" loading="lazy">
                 </figure>
-      
                 <div class="hobbies-content">
-      
                   <div class="hobbies-meta">
                     <p class="hobbies-category">Self-Help</p>
-      
                     <span class="dot"></span>
-      
-                    <time datetime="2022-02-23">Feb 23, 2022</time>
+                    <time datetime="2022-06-23">June 2022</time>
                   </div>
-      
                   <h3 class="h3 hobbies-item-title">12 Rules for Life by Jordan B. Peterson</h3>
-      
                   <p class="hobbies-text">
-                    Jordan B. Peterson's "12 Rules for Life" is a book that I read in June 2022, introduced to me by my sister. 
-                    It provides practical advice for living a meaningful and responsible life.
+                    Read in June 2022 after my sister introduced it to me. It gives practical advice for living a meaningful and responsible life.
                   </p>
-      
                 </div>
-      
               </a>
             </li>
+
             <li class="hobbies-post-item">
               <a href="#">
-      
                 <figure class="hobbies-banner-box">
-                  <img src="./assets/images/Quote_by_Fyodor_Dostoevsky.jpg" alt="Quotes by Fyodor Dostoevsky" loading="lazy">
+                  <img src="./assets/images/Quote_by_Fyodor_Dostoevsky.jpg" alt="Quote by Fyodor Dostoevsky" loading="lazy">
                 </figure>
-      
                 <div class="hobbies-content">
-      
                   <div class="hobbies-meta">
                     <p class="hobbies-category">Literature</p>
-      
                     <span class="dot"></span>
-      
-                    <time datetime="2023-02-17">Feb 17, 2023</time>
+                    <time datetime="2023-02-17">February 17, 2023</time>
                   </div>
-      
                   <h3 class="h3 hobbies-item-title">Quotes by Fyodor Dostoevsky</h3>
-      
                   <p class="hobbies-text">
-                    The profound quotes by Fyodor Dostoevsky have had a significant impact on my understanding of human nature and psychology. I explored his works in February 2023.
+                    Dostoevsky&rsquo;s work, which I explored in February 2023, deepened my understanding of human nature and psychology, an interest that connects directly to social engineering.
                   </p>
-      
                 </div>
-      
               </a>
             </li>
-           
+
             <li class="hobbies-post-item">
               <a href="#">
-                  <figure class="hobbies-banner-box">
-                      <img src="./assets/images/How_to_Win_Friends_&_Influence-People.jpg" alt="How to Win Friends & Influence People" loading="lazy">
-                  </figure>
-                  <div class="hobbies-content">
-                      <div class="hobbies-meta">
-                          <p class="hobbies-category">Personal Development</p>
-                          <span class="dot"></span>
-                          <time datetime="2024-02-24">February 24 2024</time>
-                      </div>
-                      <h3 class="h3 hobbies-item-title">How to Win Friends & Influence People</h3>
-                      <p class="hobbies-text">
-                          Delve into the timeless advice on interpersonal skills and influence by Dale Carnegie.
-                      </p>
+                <figure class="hobbies-banner-box">
+                  <img src="./assets/images/How_to_Win_Friends_&_Influence-People.jpg" alt="How to Win Friends and Influence People" loading="lazy">
+                </figure>
+                <div class="hobbies-content">
+                  <div class="hobbies-meta">
+                    <p class="hobbies-category">Personal Development</p>
+                    <span class="dot"></span>
+                    <time datetime="2024-02-24">February 24, 2024</time>
                   </div>
+                  <h3 class="h3 hobbies-item-title">How to Win Friends &amp; Influence People</h3>
+                  <p class="hobbies-text">
+                    Dale Carnegie&rsquo;s timeless advice on interpersonal skills and influence.
+                  </p>
+                </div>
               </a>
-          </li>
-          </ul>
-        
-    <div id="myModal" class="modal">
-      <span class="close">&times;</span>
-      <img class="modal-content" id="img01">
-      <div id="caption"></div>
-    </div>
-        </section>
-      
-      </article>
-     
-      <!--
-        - #CONTACT
-      -->
+            </li>
 
+          </ul>
+        </section>
+      </article>
+
+
+      <!-- #CONTACT -->
       <article class="contact" data-page="contact" id="contact">
 
         <header>
@@ -944,46 +1144,87 @@
         <section class="mapbox" data-mapbox>
           <figure>
             <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d19956.328419825893!2d29.4547207!3d-31.3256403!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e5f099c8a9c064f%3A0xbf17a301ec002795!2sNdimbaneni%2C%20South%20Africa!5e0!3m2!1sen!2sbd!4v1647608789441!5m2!1sen!2sbd"
-                width="600" height="450" loading="lazy"></iframe>
-        </figure>
+              title="Map showing Ndimbaneni, Lusikisiki, Eastern Cape"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d19956.328419825893!2d29.4547207!3d-31.3256403!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e5f099c8a9c064f%3A0xbf17a301ec002795!2sNdimbaneni%2C%20South%20Africa!5e0!3m2!1sen!2sbd!4v1647608789441!5m2!1sen!2sbd"
+              width="600" height="450" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+          </figure>
         </section>
 
         <section class="contact-form">
           <h3 class="h3 form-title">Contact Form</h3>
-          <p class="contact-message">Thank you for visiting my portfolio! I'm passionate about software development and eager to contribute my skills to your team. Whether you have a job opportunity, a project idea, or just want to connect, I'd love to hear from you. Feel free to reach out, and let's discuss how we can work together.</p>
-          <form action="https://formspree.io/f/xrgnvdyb" method="POST" class="form" data-form id="contactForm">
+          <p class="contact-message">
+            Thank you for visiting my portfolio! I&rsquo;m passionate about secure software and cybersecurity, and eager to contribute to your team. Whether you have a job opportunity, a project idea or just want to connect, feel free to reach out.
+          </p>
+
+          <form action="https://formspree.io/f/xrgnvdyb" method="POST" class="form" data-form id="contactForm" novalidate>
             <fieldset>
               <legend>Send me a message</legend>
+
               <div class="input-wrapper">
-                <input type="text" name="fullname" class="form-input" placeholder="Full name (e.g., John Doe)" required data-form-input>
-                <input type="email" name="email" class="form-input" placeholder="Email address (e.g., example@example.com)" required data-form-input>
+                <div class="field">
+                  <label for="fullname" class="visually-hidden">Full name</label>
+                  <input type="text" id="fullname" name="fullname" class="form-input" placeholder="Full name (e.g., John Doe)" autocomplete="name" minlength="2" required data-form-input>
+                </div>
+                <div class="field">
+                  <label for="email" class="visually-hidden">Email address</label>
+                  <input type="email" id="email" name="email" class="form-input" placeholder="Email address (e.g., example@example.com)" autocomplete="email" required data-form-input>
+                </div>
               </div>
-              <textarea name="message" class="form-input" placeholder="Your Message (e.g., Please enter your message here)" required data-form-input></textarea>
+
+              <div class="field">
+                <label for="subject" class="visually-hidden">Subject</label>
+                <select id="subject" name="subject" class="form-input" data-form-input>
+                  <option value="General enquiry">General enquiry</option>
+                  <option value="Job opportunity">Job opportunity</option>
+                  <option value="Project / freelance work">Project / freelance work</option>
+                  <option value="Collaboration or research">Collaboration or research</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="message" class="visually-hidden">Your message</label>
+                <textarea id="message" name="message" class="form-input" placeholder="Your message" maxlength="1500" required data-form-input></textarea>
+                <p class="char-count" aria-live="polite"><span id="charCount">0</span>/1500</p>
+              </div>
+
+              <!-- Honeypot: hidden from people, catches bots -->
+              <div class="hp-field" aria-hidden="true">
+                <label for="website">Leave this field empty</label>
+                <input type="text" id="website" name="_gotcha" tabindex="-1" autocomplete="off">
+              </div>
+
               <button class="form-btn" type="submit" disabled data-form-btn>
-                <ion-icon name="paper-plane"></ion-icon>
+                <ion-icon name="paper-plane" aria-hidden="true"></ion-icon>
                 <span>Send Message</span>
               </button>
-              <p id="formMessage" class="form-message"></p> <!-- Placeholder for form messages -->
+
+              <p id="formMessage" class="form-message" role="status" aria-live="polite"></p>
             </fieldset>
           </form>
         </section>
-        
-    
+
       </article>
 
     </div>
 
   </main>
 
-  <!--
-    - custom js link
-  -->
-  <script src="./assets/js/script.js"></script>
+  <!-- Image lightbox -->
+  <div id="myModal" class="modal" role="dialog" aria-modal="true" aria-label="Image preview" hidden>
+    <button type="button" class="close" aria-label="Close preview">&times;</button>
+    <img class="modal-content" id="img01" alt="">
+    <div id="caption"></div>
+  </div>
 
-  <!--
-    - ionicon link
-  -->
+  <!-- Back to top -->
+  <button type="button" class="back-to-top" id="backToTop" aria-label="Back to top" hidden>
+    <ion-icon name="arrow-up-outline" aria-hidden="true"></ion-icon>
+  </button>
+
+  <!-- Custom JS -->
+  <script src="./assets/js/script.js" defer></script>
+
+  <!-- Ionicons -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 

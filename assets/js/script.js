@@ -1,173 +1,380 @@
 'use strict';
 
-// Function to open the modal and show the clicked image
-function openModal(imgSrc, altText) {
-  const modal = document.getElementById('myModal');
-  const modalImg = document.getElementById('img01');
-  const captionText = document.getElementById('caption');
-  modal.style.display = 'block';
-  modalImg.src = imgSrc;
-  captionText.innerHTML = altText;
+/* Small helpers */
+const $ = (sel, root = document) => root.querySelector(sel);
+const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Hide the navbar
-  const navbar = document.querySelector('.navbar');
-  navbar.style.display = 'none';
-
-  // Get the <span> element that closes the modal
-  const span = document.getElementsByClassName('close')[0];
-
-  // When the user clicks on <span> (x), close the modal
-  span.onclick = function() {
-    modal.style.display = 'none';
-
-    // Show the navbar
-    navbar.style.display = 'block';
-  };
+function safeStorage(action, key, value) {
+  try {
+    if (action === 'get') return localStorage.getItem(key);
+    localStorage.setItem(key, value);
+  } catch (e) { return null; }
 }
 
-// Add event listeners to each image to open the modal when clicked
-const imageLinks = document.querySelectorAll('.hobbies-banner-box img');
-imageLinks.forEach(link => {
-  link.addEventListener('click', function (event) {
-    event.preventDefault(); // Prevent the default behavior of the link
-    openModal(this.src, this.alt);
+function toast(message, ms = 3000) {
+  const region = $('#toastRegion');
+  if (!region) return;
+  const el = document.createElement('div');
+  el.className = 'toast';
+  el.textContent = message;
+  region.appendChild(el);
+  setTimeout(() => el.remove(), ms);
+}
+
+/* Page loader */
+window.addEventListener('load', () => {
+  const loader = $('#pageLoader');
+  if (loader) setTimeout(() => loader.classList.add('done'), 300);
+});
+
+/* Theme toggle (remembers the choice, otherwise follows the system) */
+const root = document.documentElement;
+const themeBtn = $('#themeToggle');
+const savedTheme = safeStorage('get', 'theme');
+const systemLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+
+function applyTheme(theme) {
+  root.dataset.theme = theme;
+  if (themeBtn) themeBtn.setAttribute('aria-pressed', String(theme === 'light'));
+  const meta = $('meta[name="theme-color"]');
+  if (meta) meta.content = theme === 'light' ? '#ededed' : '#161616';
+}
+
+applyTheme(savedTheme || (systemLight ? 'light' : 'dark'));
+
+if (themeBtn) {
+  themeBtn.addEventListener('click', () => {
+    const next = root.dataset.theme === 'light' ? 'dark' : 'light';
+    applyTheme(next);
+    safeStorage('set', 'theme', next);
+  });
+}
+
+/* Sidebar (mobile) */
+const sidebar = $('[data-sidebar]');
+const sidebarBtn = $('[data-sidebar-btn]');
+
+if (sidebarBtn && sidebar) {
+  sidebarBtn.addEventListener('click', () => {
+    const open = sidebar.classList.toggle('active');
+    sidebarBtn.setAttribute('aria-expanded', String(open));
+  });
+}
+
+/* Page navigation */
+const navLinks = $$('[data-nav-link]');
+const pages = $$('[data-page]');
+
+function showPage(name, { updateHash = true, scroll = true } = {}) {
+  const exists = pages.some(p => p.dataset.page === name);
+  if (!exists) name = 'about';
+
+  pages.forEach(p => p.classList.toggle('active', p.dataset.page === name));
+  navLinks.forEach(l => {
+    const active = l.dataset.navLink === name;
+    l.classList.toggle('active', active);
+    l.setAttribute('aria-selected', String(active));
+  });
+
+  if (updateHash) history.replaceState(null, '', '#' + name.replace(/\s+/g, '-'));
+  if (scroll) window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+
+  animateSkills();
+  runCounters();
+  observeReveals();
+}
+
+navLinks.forEach(link => link.addEventListener('click', () => showPage(link.dataset.navLink)));
+
+/* Links that jump to another tab (e.g. project cards) */
+$$('[data-goto]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    showPage(a.dataset.goto);
+    const target = $(a.getAttribute('href'));
+    if (target && target.id && !target.matches('[data-page]')) {
+      setTimeout(() => target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' }), 80);
+    }
   });
 });
 
-// Functionality for showing and hiding the sidebar on mobile
-const sidebarBtn = document.querySelector("[data-sidebar-btn]");
-const sidebar = document.querySelector("[data-sidebar]");
-sidebarBtn.addEventListener("click", function () {
-  sidebar.classList.toggle("active");
-});
+/* Keep placeholder "#" links from jumping to the top */
+$$('a[href="#"]').forEach(a => a.addEventListener('click', e => e.preventDefault()));
 
-// Custom select functionality
-const select = document.querySelector("[data-select]");
-const selectItems = document.querySelectorAll("[data-select-item]");
-const selectValue = document.querySelector("[data-select-value]");
+function pageFromHash() {
+  const hash = decodeURIComponent(location.hash.replace('#', '')).replace(/-/g, ' ').toLowerCase();
+  return pages.some(p => p.dataset.page === hash) ? hash : 'about';
+}
 
-select.addEventListener("click", function () {
-  select.classList.toggle("active");
-});
+window.addEventListener('hashchange', () => showPage(pageFromHash(), { updateHash: false }));
 
-// Add event listener to each select item
-selectItems.forEach(item => {
-  item.addEventListener("click", function () {
-    const selectedValue = this.innerText.toLowerCase();
-    selectValue.innerText = this.innerText;
-    select.classList.remove("active");
-    filterFunc(selectedValue);
+/* Typed tagline */
+const typedEl = $('#typedText');
+if (typedEl && !reduceMotion) {
+  let phrases = [];
+  try { phrases = JSON.parse(typedEl.dataset.typed || '[]'); } catch (e) { phrases = []; }
+  const decode = s => { const t = document.createElement('textarea'); t.innerHTML = s; return t.value; };
+  phrases = phrases.map(decode);
 
-    // Update active class on select items
-    selectItems.forEach(item => item.classList.remove("active"));
-    this.classList.add("active");
-  });
-});
+  if (phrases.length) {
+    let p = 0, c = 0, deleting = false;
+    const tick = () => {
+      const word = phrases[p];
+      typedEl.textContent = word.slice(0, c);
+      if (!deleting && c < word.length) { c++; setTimeout(tick, 70); }
+      else if (!deleting) { deleting = true; setTimeout(tick, 1600); }
+      else if (c > 0) { c--; setTimeout(tick, 35); }
+      else { deleting = false; p = (p + 1) % phrases.length; setTimeout(tick, 300); }
+    };
+    tick();
+  }
+}
 
-// Filter functionality
-const filterItems = document.querySelectorAll("[data-filter-item]");
-const filterBtn = document.querySelectorAll("[data-filter-btn]");
-
-function filterFunc(selectedValue) {
-  filterItems.forEach(item => {
-    if (selectedValue === "all" || selectedValue === item.dataset.category) {
-      item.classList.add("active");
-    } else {
-      item.classList.remove("active");
+/* Skill bars animate when the CV page opens */
+function animateSkills() {
+  $$('.skill-progress-fill').forEach(bar => {
+    if (!bar.dataset.width) bar.dataset.width = bar.style.width;
+    if (bar.closest('article.active')) {
+      bar.style.width = '0';
+      requestAnimationFrame(() => requestAnimationFrame(() => { bar.style.width = bar.dataset.width; }));
     }
   });
 }
 
-// Add event listener to each filter button
-filterBtn.forEach(btn => {
-  btn.addEventListener("click", function () {
-    const selectedValue = this.innerText.toLowerCase();
-    selectValue.innerText = this.innerText;
-    filterFunc(selectedValue);
-
-    // Update active class on buttons
-    filterBtn.forEach(button => button.classList.remove("active"));
-    this.classList.add("active");
+/* Count-up stats on the About page */
+function runCounters() {
+  $$('[data-count-to]').forEach(el => {
+    if (!el.closest('article.active')) return;
+    const target = Number(el.dataset.countTo);
+    if (reduceMotion) { el.textContent = target; return; }
+    const duration = 1100;
+    const start = performance.now();
+    const step = now => {
+      const t = Math.min((now - start) / duration, 1);
+      el.textContent = Math.round(target * (1 - Math.pow(1 - t, 3)));
+      if (t < 1) requestAnimationFrame(step);
+    };
+    el.textContent = '0';
+    requestAnimationFrame(step);
   });
-});
+}
 
-const form = document.getElementById('contactForm');
-const inputs = form.querySelectorAll('[data-form-input]');
-const submitButton = form.querySelector('[data-form-btn]');
-const formMessage = document.getElementById('formMessage');
-
-// Enable the submit button when all inputs are filled
-inputs.forEach(input => {
-  input.addEventListener('input', () => {
-    submitButton.disabled = ![...inputs].every(input => input.value);
-  });
-});
-
-// Form submission event
-form.addEventListener('submit', async function (event) {
-  event.preventDefault();
-  
-  // Optional: show loading state
-  submitButton.disabled = true;
-  formMessage.textContent = "Sending message...";
-  formMessage.style.color = "blue";
-
-  try {
-    const response = await fetch(form.action, {
-      method: 'POST',
-      body: new FormData(form),
-      headers: { 
-        'Accept': 'application/json',
-        'Content-Type': 'application/x-www-form-urlencoded'
+/* Reveal on scroll */
+let revealObserver = null;
+function observeReveals() {
+  if (reduceMotion || !('IntersectionObserver' in window)) return;
+  if (!revealObserver) {
+    revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+  }
+  $$('article.active .info-card, article.active .service-item, article.active .timeline-item, article.active .reference-item, article.active .stat-item')
+    .forEach(el => {
+      if (!el.classList.contains('in-view')) {
+        el.classList.add('reveal');
+        revealObserver.observe(el);
       }
     });
+}
 
-    if (response.ok) {
-      formMessage.textContent = "Thank you! Your message has been sent.";
-      formMessage.style.color = "green";
-      form.reset();
-    } else {
-      const errorData = await response.json();
-      formMessage.textContent = `Oops! Error: ${errorData.error || "Unknown error occurred"}`;
-      formMessage.style.color = "red";
-    }
-  } catch (error) {
-    formMessage.textContent = "Oops! There was a problem sending your message. Check console for more details.";
-    console.error("Submission Error:", error);
-    formMessage.style.color = "red";
-  } finally {
-    submitButton.disabled = true; // Keep it disabled until new input
+/* Portfolio filter + search */
+const filterItems = $$('[data-filter-item]');
+const filterBtns = $$('[data-filter-btn]');
+const select = $('[data-select]');
+const selectItems = $$('[data-select-item]');
+const selectValue = $('[data-select-value]');
+const searchInput = $('[data-project-search]');
+const noResults = $('[data-no-results]');
+
+let currentCategory = 'all';
+
+function applyFilters() {
+  const query = (searchInput ? searchInput.value : '').trim().toLowerCase();
+  let visible = 0;
+
+  filterItems.forEach(item => {
+    const matchesCategory = currentCategory === 'all' || item.dataset.category === currentCategory;
+    const haystack = (item.textContent + ' ' + (item.dataset.tags || '')).toLowerCase();
+    const matchesSearch = !query || haystack.includes(query);
+    const show = matchesCategory && matchesSearch;
+    item.classList.toggle('active', show);
+    if (show) visible++;
+  });
+
+  if (noResults) noResults.hidden = visible > 0;
+}
+
+function setCategory(label) {
+  currentCategory = label.trim().toLowerCase();
+  if (selectValue) selectValue.textContent = label.trim();
+
+  filterBtns.forEach(b => b.classList.toggle('active', b.textContent.trim().toLowerCase() === currentCategory));
+  selectItems.forEach(i => i.classList.toggle('active', i.textContent.trim().toLowerCase() === currentCategory));
+  applyFilters();
+}
+
+filterBtns.forEach(btn => btn.addEventListener('click', () => setCategory(btn.textContent)));
+
+if (select) {
+  select.addEventListener('click', () => {
+    const open = select.classList.toggle('active');
+    select.setAttribute('aria-expanded', String(open));
+  });
+}
+
+selectItems.forEach(item => item.addEventListener('click', () => {
+  setCategory(item.textContent);
+  if (select) { select.classList.remove('active'); select.setAttribute('aria-expanded', 'false'); }
+}));
+
+if (searchInput) searchInput.addEventListener('input', applyFilters);
+
+/* Image lightbox */
+const modal = $('#myModal');
+const modalImg = $('#img01');
+const captionText = $('#caption');
+const closeBtn = modal ? $('.close', modal) : null;
+const navbar = $('.navbar');
+let lastFocus = null;
+
+function openModal(src, alt) {
+  if (!modal) return;
+  lastFocus = document.activeElement;
+  modalImg.src = src;
+  modalImg.alt = alt || '';
+  captionText.textContent = alt || '';
+  modal.hidden = false;
+  modal.classList.add('open');
+  if (navbar) navbar.classList.add('hidden');
+  document.body.style.overflow = 'hidden';
+  if (closeBtn) closeBtn.focus();
+}
+
+function closeModal() {
+  if (!modal || modal.hidden) return;
+  modal.classList.remove('open');
+  modal.hidden = true;
+  if (navbar) navbar.classList.remove('hidden');
+  document.body.style.overflow = '';
+  if (lastFocus) lastFocus.focus();
+}
+
+$$('.hobbies-banner-box img, img.zoomable').forEach(img => {
+  img.addEventListener('click', e => {
+    e.preventDefault();
+    e.stopPropagation();
+    openModal(img.currentSrc || img.src, img.alt);
+  });
+});
+
+if (closeBtn) closeBtn.addEventListener('click', closeModal);
+if (modal) modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    closeModal();
+    if (select) { select.classList.remove('active'); select.setAttribute('aria-expanded', 'false'); }
   }
 });
-// Page navigation functionality
-const navigationLinks = document.querySelectorAll("[data-nav-link]");
-const pages = document.querySelectorAll("[data-page]");
 
-function showPage(pageName) {
-  pages.forEach(page => {
-    if (page.dataset.page === pageName) {
-      page.classList.add("active");
-    } else {
-      page.classList.remove("active");
+/* Contact form */
+const form = $('#contactForm');
+
+if (form) {
+  const inputs = $$('[data-form-input]', form);
+  const submitBtn = $('[data-form-btn]', form);
+  const formMessage = $('#formMessage');
+  const messageField = $('#message');
+  const charCount = $('#charCount');
+
+  const setStatus = (text, type) => {
+    formMessage.textContent = text;
+    formMessage.className = 'form-message ' + (type || '');
+  };
+
+  const isValid = () => inputs.every(i => i.checkValidity() && i.value.trim() !== '');
+
+  inputs.forEach(input => {
+    input.addEventListener('input', () => {
+      submitBtn.disabled = !isValid();
+      if (input === messageField && charCount) charCount.textContent = input.value.length;
+    });
+    input.addEventListener('blur', () => input.classList.add('touched'));
+  });
+
+  form.addEventListener('submit', async event => {
+    event.preventDefault();
+
+    // Honeypot: real people never fill this in
+    const trap = $('#website', form);
+    if (trap && trap.value) return;
+
+    if (!isValid()) {
+      inputs.forEach(i => i.classList.add('touched'));
+      setStatus('Please fill in all fields correctly.', 'error');
+      return;
+    }
+
+    submitBtn.disabled = true;
+    setStatus('Sending message...', 'info');
+
+    try {
+      // No Content-Type header: the browser sets the correct multipart boundary for FormData.
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' }
+      });
+
+      if (response.ok) {
+        setStatus('Thank you! Your message has been sent.', 'success');
+        toast('Message sent. I will get back to you soon.');
+        form.reset();
+        inputs.forEach(i => i.classList.remove('touched'));
+        if (charCount) charCount.textContent = '0';
+      } else {
+        let detail = 'Unknown error';
+        try {
+          const data = await response.json();
+          detail = (data.errors && data.errors.map(e => e.message).join(', ')) || data.error || detail;
+        } catch (e) { /* ignore */ }
+        setStatus('Oops! ' + detail, 'error');
+        submitBtn.disabled = false;
+      }
+    } catch (error) {
+      console.error('Submission error:', error);
+      setStatus('There was a problem sending your message. Please try again or email me directly.', 'error');
+      submitBtn.disabled = false;
     }
   });
 }
 
-navigationLinks.forEach(navLink => {
-  navLink.addEventListener("click", function () {
-    const pageName = this.innerText.toLowerCase();
-    showPage(pageName);
+/* Scroll progress + back to top */
+const progress = $('#scrollProgress');
+const toTop = $('#backToTop');
 
-    navigationLinks.forEach(link => {
-      link.classList.remove("active");
-    });
-    this.classList.add("active");
-    window.scrollTo(0, 0);
-  });
-});
+function onScroll() {
+  const scrollTop = window.scrollY || document.documentElement.scrollTop;
+  const height = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = height > 0 ? Math.min(100, Math.round((scrollTop / height) * 100)) : 0;
+  if (progress) {
+    progress.style.width = pct + '%';
+    progress.setAttribute('aria-valuenow', String(pct));
+  }
+  if (toTop) toTop.hidden = scrollTop < 400;
+}
 
-// Show the first page (About) by default
-document.addEventListener("DOMContentLoaded", function () {
-  showPage("about");
-  navigationLinks[0].classList.add("active");
+window.addEventListener('scroll', onScroll, { passive: true });
+if (toTop) toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' }));
+
+/* Start */
+document.addEventListener('DOMContentLoaded', () => {
+  showPage(pageFromHash(), { updateHash: false, scroll: false });
+  onScroll();
 });
