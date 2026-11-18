@@ -3,7 +3,6 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="dark light">
   <meta name="theme-color" content="#161616">
@@ -19,20 +18,20 @@
   <meta property="og:title" content="Aphelele Marwarwa | Cybersecurity & Software Developer">
   <meta property="og:description" content="Secure full-stack development, SIEM evaluation, OWASP-driven risk assessment and research on tamper-evident banking data.">
   <meta property="og:url" content="https://aphelele-marwarwa.github.io/Personal-Portfolio/">
-  <meta property="og:image" content="./assets/images/Aphele.jpg">
+  <meta property="og:image" content="https://aphelele-marwarwa.github.io/Personal-Portfolio/assets/images/Aphele.jpg">
   <meta name="twitter:card" content="summary">
 
   <!-- Favicon -->
-  <link rel="shortcut icon" href="./assets/images/Aphelele Marwarwa.png" type="image/x-icon">
-
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="icon" href="./assets/images/Aphelele%20Marwarwa.png" type="image/png">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="./assets/css/style.css">
 
   <!-- Structured data -->
   <script type="application/ld+json">
@@ -41,7 +40,7 @@
     "@type": "Person",
     "name": "Aphelele Ayolisile Marwarwa",
     "jobTitle": "Cybersecurity & Software Developer",
-    "email": "mailto:marwarwa.ap@gmail.com",
+    "email": "marwarwa.ap@gmail.com",
     "telephone": "+27825918034",
     "url": "https://aphelele-marwarwa.github.io/Personal-Portfolio/",
     "alumniOf": { "@type": "CollegeOrUniversity", "name": "Nelson Mandela University" },
@@ -66,6 +65,8 @@
     <p class="noscript-msg">JavaScript is turned off. The site still works, but filters, theme switching and animations are disabled.</p>
   </noscript>
 
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
   <!-- Toast notifications -->
   <div class="toast-region" id="toastRegion" role="status" aria-live="polite"></div>
 
@@ -75,7 +76,7 @@
     <aside class="sidebar" data-sidebar aria-label="Profile and contact details">
       <div class="sidebar-info">
         <figure class="avatar-box">
-          <img src="./assets/images/Professional Studio Headshot.png" alt="Portrait of Aphelele Marwarwa" width="80" height="80">
+          <img src="./assets/images/Professional%20Studio%20Headshot.png" alt="Portrait of Aphelele Marwarwa" width="80" height="80">
         </figure>
 
         <div class="info-content">
@@ -172,20 +173,20 @@
 
       <!-- #NAVBAR -->
       <nav class="navbar" aria-label="Primary">
-        <ul class="navbar-list" role="tablist">
-          <li class="navbar-item"><button class="navbar-link active" data-nav-link="about" role="tab" aria-selected="true">About</button></li>
-          <li class="navbar-item"><button class="navbar-link" data-nav-link="curriculum vitae" role="tab" aria-selected="false">Curriculum Vitae</button></li>
-          <li class="navbar-item"><button class="navbar-link" data-nav-link="portfolio" role="tab" aria-selected="false">Portfolio</button></li>
-          <li class="navbar-item"><button class="navbar-link" data-nav-link="security" role="tab" aria-selected="false">Cyber &amp; Social Eng.</button></li>
-          <li class="navbar-item"><button class="navbar-link" data-nav-link="research" role="tab" aria-selected="false">Research</button></li>
-          <li class="navbar-item"><button class="navbar-link" data-nav-link="hobbies" role="tab" aria-selected="false">Hobbies</button></li>
-          <li class="navbar-item"><button class="navbar-link" data-nav-link="contact" role="tab" aria-selected="false">Contact</button></li>
+        <ul class="navbar-list" role="tablist" aria-label="Portfolio sections">
+          <li class="navbar-item" role="presentation"><button type="button" id="tab-about" class="navbar-link active" data-nav-link="about" role="tab" aria-controls="about" aria-selected="true" tabindex="0">About</button></li>
+          <li class="navbar-item" role="presentation"><button type="button" id="tab-curriculum-vitae" class="navbar-link" data-nav-link="curriculum vitae" role="tab" aria-controls="Curriculum-Vitae" aria-selected="false" tabindex="-1">Curriculum Vitae</button></li>
+          <li class="navbar-item" role="presentation"><button type="button" id="tab-portfolio" class="navbar-link" data-nav-link="portfolio" role="tab" aria-controls="portfolio" aria-selected="false" tabindex="-1">Portfolio</button></li>
+          <li class="navbar-item" role="presentation"><button type="button" id="tab-security" class="navbar-link" data-nav-link="security" role="tab" aria-controls="security" aria-selected="false" tabindex="-1">Cyber &amp; Social Eng.</button></li>
+          <li class="navbar-item" role="presentation"><button type="button" id="tab-research" class="navbar-link" data-nav-link="research" role="tab" aria-controls="research" aria-selected="false" tabindex="-1">Research</button></li>
+          <li class="navbar-item" role="presentation"><button type="button" id="tab-hobbies" class="navbar-link" data-nav-link="hobbies" role="tab" aria-controls="hobbies" aria-selected="false" tabindex="-1">Hobbies</button></li>
+          <li class="navbar-item" role="presentation"><button type="button" id="tab-contact" class="navbar-link" data-nav-link="contact" role="tab" aria-controls="contact" aria-selected="false" tabindex="-1">Contact</button></li>
         </ul>
       </nav>
 
 
       <!-- #ABOUT -->
-      <article class="about" data-page="about" id="about">
+      <article class="about" data-page="about" id="about" role="tabpanel" aria-labelledby="tab-about" tabindex="0" aria-hidden="false">
 
         <header>
           <h2 class="h2 article-title">About me</h2>
@@ -269,7 +270,7 @@
 
             <li class="service-item">
               <div class="service-icon-box">
-                <img src="./assets/images/Database Management.png" alt="" width="100" height="100" loading="lazy">
+                <img src="./assets/images/Database%20Management.png" alt="" width="100" height="100" loading="lazy">
               </div>
               <div class="service-content-box">
                 <h4 class="h4 service-item-title">Databases &amp; Data Analysis</h4>
@@ -338,7 +339,7 @@
 
 
       <!-- #CURRICULUM VITAE -->
-      <article class="Curriculum Vitae" data-page="curriculum vitae" id="Curriculum-Vitae">
+      <article class="curriculum-vitae" data-page="curriculum vitae" id="Curriculum-Vitae" role="tabpanel" aria-labelledby="tab-curriculum-vitae" tabindex="0" aria-hidden="true">
 
         <header>
           <h2 class="h2 article-title">Curriculum Vitae</h2>
@@ -411,7 +412,7 @@
               <h4 class="h4 timeline-item-title">Bartender &mdash; Beershack Bar Cafe</h4>
               <span>2022 &mdash; 2023</span>
               <div class="image-gallery">
-                <img src="./assets/images/Me And Mr Makotsa.jpg" alt="Bartending at Beershack Bar Cafe" class="timeline-image" loading="lazy">
+                <img src="./assets/images/Me%20And%20Mr%20Makotsa.jpg" alt="Bartending at Beershack Bar Cafe" class="timeline-image" loading="lazy">
                 <img src="./assets/images/collegues.jpg" alt="Colleagues at Beershack Bar Cafe" class="timeline-image" loading="lazy">
               </div>
               <p class="timeline-text">
@@ -460,32 +461,32 @@
 
           <ul class="skills-list content-card">
             <li class="skills-item">
-              <div class="title-wrapper"><h5 class="h5">Cybersecurity &amp; Monitoring</h5><data value="75">75%</data></div>
+              <div class="title-wrapper"><h4 class="h5">Cybersecurity &amp; Monitoring</h4><data value="75">75%</data></div>
               <p class="skill-subtext">Splunk, IBM QRadar &amp; Fortinet (SIEM and log analysis), OWASP principles, secure coding, vulnerability and risk assessment, threat detection, root cause analysis.</p>
               <div class="skill-progress-bg" role="progressbar" aria-label="Cybersecurity and monitoring proficiency" aria-valuemin="0" aria-valuemax="100" aria-valuenow="75"><div class="skill-progress-fill" style="width: 75%;"></div></div>
             </li>
             <li class="skills-item">
-              <div class="title-wrapper"><h5 class="h5">Software Development</h5><data value="85">85%</data></div>
+              <div class="title-wrapper"><h4 class="h5">Software Development</h4><data value="85">85%</data></div>
               <p class="skill-subtext">C#, ASP.NET Core Web API, Python, Node.js &amp; Express.js, JavaScript (ES6+), TypeScript, SQL (SQL Server, PostgreSQL, SQLite), REST API design, authentication, performance optimisation.</p>
               <div class="skill-progress-bg" role="progressbar" aria-label="Software development proficiency" aria-valuemin="0" aria-valuemax="100" aria-valuenow="85"><div class="skill-progress-fill" style="width: 85%;"></div></div>
             </li>
             <li class="skills-item">
-              <div class="title-wrapper"><h5 class="h5">Web &amp; Frontend</h5><data value="80">80%</data></div>
+              <div class="title-wrapper"><h4 class="h5">Web &amp; Frontend</h4><data value="80">80%</data></div>
               <p class="skill-subtext">React, React Router, Vite, HTML5/CSS3, responsive and accessible design, reusable UI components, single-page applications.</p>
               <div class="skill-progress-bg" role="progressbar" aria-label="Web and frontend proficiency" aria-valuemin="0" aria-valuemax="100" aria-valuenow="80"><div class="skill-progress-fill" style="width: 80%;"></div></div>
             </li>
             <li class="skills-item">
-              <div class="title-wrapper"><h5 class="h5">Platforms &amp; Analytics</h5><data value="72">72%</data></div>
+              <div class="title-wrapper"><h4 class="h5">Platforms &amp; Analytics</h4><data value="72">72%</data></div>
               <p class="skill-subtext">E-commerce platforms, PayFast integration, web analytics, user tracking frameworks, data analysis, WCMS/DAM integration concepts.</p>
               <div class="skill-progress-bg" role="progressbar" aria-label="Platforms and analytics proficiency" aria-valuemin="0" aria-valuemax="100" aria-valuenow="72"><div class="skill-progress-fill" style="width: 72%;"></div></div>
             </li>
             <li class="skills-item">
-              <div class="title-wrapper"><h5 class="h5">Quality, DevOps &amp; Support</h5><data value="75">75%</data></div>
+              <div class="title-wrapper"><h4 class="h5">Quality, DevOps &amp; Support</h4><data value="75">75%</data></div>
               <p class="skill-subtext">Git, CI/CD principles, code review, TDD/testing basics, Agile/Scrum, L2 technical support and issue reproduction, technical documentation.</p>
               <div class="skill-progress-bg" role="progressbar" aria-label="Quality, DevOps and support proficiency" aria-valuemin="0" aria-valuemax="100" aria-valuenow="75"><div class="skill-progress-fill" style="width: 75%;"></div></div>
             </li>
             <li class="skills-item">
-              <div class="title-wrapper"><h5 class="h5">Professional &amp; Communication</h5><data value="80">80%</data></div>
+              <div class="title-wrapper"><h4 class="h5">Professional &amp; Communication</h4><data value="80">80%</data></div>
               <p class="skill-subtext">Communication, teamwork, adaptability, time management, cross-functional collaboration.</p>
               <div class="skill-progress-bg" role="progressbar" aria-label="Professional and communication proficiency" aria-valuemin="0" aria-valuemax="100" aria-valuenow="80"><div class="skill-progress-fill" style="width: 80%;"></div></div>
             </li>
@@ -515,7 +516,7 @@
 
 
       <!-- #PORTFOLIO -->
-      <article class="portfolio" data-page="portfolio" id="portfolio">
+      <article class="portfolio" data-page="portfolio" id="portfolio" role="tabpanel" aria-labelledby="tab-portfolio" tabindex="0" aria-hidden="true">
 
         <header>
           <h2 class="h2 article-title">Projects</h2>
@@ -613,7 +614,7 @@
               <a href="#">
                 <figure class="project-img">
                   <div class="project-item-icon-box"><ion-icon name="eye-outline" aria-hidden="true"></ion-icon></div>
-                  <img src="./assets/images/FridgeManagement .png" alt="Fridge management application" loading="lazy">
+                  <img src="./assets/images/FridgeManagement%20.png" alt="Fridge management application" loading="lazy">
                 </figure>
                 <h3 class="project-title">Fridge Management Application</h3>
                 <p class="project-category">Web development</p>
@@ -643,7 +644,7 @@
 
 
       <!-- #CYBERSECURITY & SOCIAL ENGINEERING -->
-      <article class="security" data-page="security" id="security">
+      <article class="security" data-page="security" id="security" role="tabpanel" aria-labelledby="tab-security" tabindex="0" aria-hidden="true">
 
         <header>
           <h2 class="h2 article-title">Cybersecurity &amp; Social Engineering</h2>
@@ -781,7 +782,7 @@
 
 
       <!-- #RESEARCH -->
-      <article class="research" data-page="research" id="research">
+      <article class="research" data-page="research" id="research" role="tabpanel" aria-labelledby="tab-research" tabindex="0" aria-hidden="true">
 
         <header>
           <h2 class="h2 article-title">Research</h2>
@@ -860,7 +861,7 @@
 
 
       <!-- #HOBBIES -->
-      <article class="hobbies" data-page="hobbies" id="hobbies">
+      <article class="hobbies" data-page="hobbies" id="hobbies" role="tabpanel" aria-labelledby="tab-hobbies" tabindex="0" aria-hidden="true">
 
         <header>
           <h2 class="h2 article-title">Hobbies</h2>
@@ -987,7 +988,7 @@
                   <div class="hobbies-meta">
                     <p class="hobbies-category">Philosophy</p>
                     <span class="dot"></span>
-                    <time datetime="2022-04-23">April 2022</time>
+                    <time datetime="2022-04">April 2022</time>
                   </div>
                   <h3 class="h3 hobbies-item-title">Meditations by Marcus Aurelius</h3>
                   <p class="hobbies-text">
@@ -1006,7 +1007,7 @@
                   <div class="hobbies-meta">
                     <p class="hobbies-category">Self-Help</p>
                     <span class="dot"></span>
-                    <time datetime="2022-06-23">June 2022</time>
+                    <time datetime="2022-06">June 2022</time>
                   </div>
                   <h3 class="h3 hobbies-item-title">12 Rules for Life by Jordan B. Peterson</h3>
                   <p class="hobbies-text">
@@ -1038,7 +1039,7 @@
             <li class="hobbies-post-item">
               <a href="#">
                 <figure class="hobbies-banner-box">
-                  <img src="./assets/images/How_to_Win_Friends_&_Influence-People.jpg" alt="How to Win Friends and Influence People" loading="lazy">
+                  <img src="./assets/images/How_to_Win_Friends_&amp;_Influence-People.jpg" alt="How to Win Friends and Influence People" loading="lazy">
                 </figure>
                 <div class="hobbies-content">
                   <div class="hobbies-meta">
@@ -1060,7 +1061,7 @@
 
 
       <!-- #CONTACT -->
-      <article class="contact" data-page="contact" id="contact">
+      <article class="contact" data-page="contact" id="contact" role="tabpanel" aria-labelledby="tab-contact" tabindex="0" aria-hidden="true">
 
         <header>
           <h2 class="h2 article-title">Contact</h2>

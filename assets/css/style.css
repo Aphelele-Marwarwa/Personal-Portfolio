@@ -729,7 +729,7 @@ textarea.form-input { min-height: 100px; height: 120px; max-height: 200px; resiz
   .sidebar, article { width: 950px; box-shadow: var(--shadow-5); }
 
   main { margin-bottom: 60px; }
-  .main-content { position: relative; width: max-content; margin: auto; }
+  .main-content { position: relative; width: max-content; margin: auto; padding-top: 82px; }
 
   .navbar { position: absolute; bottom: auto; top: 0; left: auto; right: 0; width: max-content; border-radius: 0 20px; padding: 0 12px; box-shadow: none; }
   .navbar-list { gap: 18px; padding: 0 12px; }
@@ -778,3 +778,72 @@ textarea.form-input { min-height: 100px; height: 120px; max-height: 200px; resiz
   article { display: block !important; box-shadow: none; border: none; page-break-after: always; }
   body { background: #fff; }
 }
+
+
+/* Light theme: hobby cards still used the heavy dark-theme shadow */
+[data-theme="light"] { --shadow-4: 0 25px 50px hsla(0, 0%, 0%, 0.08); }
+
+/* Technology logos: keep proportions, stop stretching */
+.technologies-item img { width: 100%; height: 50px; object-fit: contain; }
+
+/* Consistent card images (previously "height: auto" gave uneven grids) */
+@media (min-width: 450px) {
+  .project-img,
+  .hobbies-banner-box { height: auto; aspect-ratio: 16 / 10; }
+}
+@media (min-width: 1024px) {
+  .hobbies-banner-box { height: 230px; aspect-ratio: auto; }
+}
+
+/* Zoom cursor only on images that actually open the lightbox */
+.hobbies-banner-box img { cursor: inherit; }
+.hobbies-banner-box img.zoomable,
+.case-study-figure img.zoomable { cursor: zoom-in; }
+
+/* Navbar: Safari blur support + notch / home-indicator safe area */
+.navbar { -webkit-backdrop-filter: blur(10px); padding-bottom: env(safe-area-inset-bottom, 0); }
+
+/* Visible keyboard focus on form fields (outline was removed) */
+.form-input:focus-visible { outline: 2px solid var(--orange-yellow-crayola); outline-offset: 2px; }
+
+/* Browser autofill no longer paints fields white */
+.form-input:-webkit-autofill,
+.form-input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--white-2);
+  box-shadow: 0 0 0 1000px var(--eerie-black-2) inset;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+/* Thin themed scrollbar in Firefox */
+.has-scrollbar { scrollbar-width: thin; scrollbar-color: var(--orange-yellow-crayola) var(--onyx); }
+
+/* Print: reveal-on-scroll content must not stay hidden */
+@media print {
+  .reveal { opacity: 1 !important; transform: none !important; }
+  a { color: inherit; }
+}
+
+/* Additional accessibility and layout refinements */
+.navbar-link:focus-visible,
+.info_more-btn:focus-visible,
+.filter-select:focus-visible,
+.filter-item button:focus-visible,
+.select-item button:focus-visible,
+.close:focus-visible,
+.back-to-top:focus-visible {
+  outline: 2px solid var(--orange-yellow-crayola);
+  outline-offset: 3px;
+}
+
+.navbar-link { cursor: pointer; }
+.navbar-list { list-style: none; }
+
+/* Prevent fixed mobile navigation from covering the final content. */
+@media (max-width: 1023px) {
+  main { padding-bottom: 12px; }
+  .navbar { padding-bottom: max(0px, env(safe-area-inset-bottom, 0px)); }
+}
+
+
+/* Keep keyboard users informed when a page panel receives focus. */
+article[role="tabpanel"]:focus { outline: none; }
